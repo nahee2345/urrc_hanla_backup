@@ -1,0 +1,22 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from race_interfaces/msg/PathState.msg
+// generated code does not contain a copyright notice
+
+#include "nav_msgs/msg/Path.idl"
+#include "std_msgs/msg/Header.idl"
+
+module race_interfaces {
+  module msg {
+    struct PathState {
+      std_msgs::msg::Header header;
+
+      boolean valid;
+
+      float confidence;
+
+      int8 mode;
+
+      nav_msgs::msg::Path path;
+    };
+  };
+};

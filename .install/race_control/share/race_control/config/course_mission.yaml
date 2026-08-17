@@ -1,0 +1,8 @@
+course_mission_node:
+  ros__parameters:
+    ramp_pitch_deg: 10.0
+    ramp_delay_sec: 2.0
+    stop_distance_m: 0.5
+    minimum_stop_sec: 0.5
+    command_rate_hz: 20.0
+    sensor_timeout_sec: 0.5

@@ -1,0 +1,29 @@
+camera_image_path_node:
+  ros__parameters:
+    semantic_path_frame_topic: /perception/semantic_path_frame
+    control_mode_topic: /mission/control_mode
+    visualization_only: false
+    input_image_topic: /camera/image_raw
+    path_overlay_max_fps: 45.0
+    vehicle_center_x_px: 320.0
+    roi_top: 120
+    roi_bottom: 475
+    sample_interval_px: 10
+    sample_band_half_height_px: 2
+    seed_half_width_px: 80
+    seed_height_px: 24
+    minimum_component_pixels: 20
+    maximum_lateral_jump_px: 90.0
+    road_containment_tolerance_px: 8
+    exclusion_overlap_ratio: 0.35
+    polynomial_degree: 2
+    temporal_alpha: 0.35
+    maximum_temporal_shift_px: 55.0
+    max_temporal_fallback_frames: 5
+    both_weight: 1.0
+    single_weight: 0.72
+    road_weight: 0.48
+    temporal_weight: 0.25
+    valid_min_points: 8
+    valid_min_both_ratio: 0.55
+    valid_min_confidence: 0.55

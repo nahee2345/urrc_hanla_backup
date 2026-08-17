@@ -1,0 +1,37 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from race_interfaces/msg/AutonomyObservation.msg
+// generated code does not contain a copyright notice
+
+#include "std_msgs/msg/Header.idl"
+
+module race_interfaces {
+  module msg {
+    module AutonomyObservation_Constants {
+      const uint8 TRAFFIC_UNKNOWN = 0;
+      const uint8 TRAFFIC_RED = 1;
+      const uint8 TRAFFIC_YELLOW = 2;
+      const uint8 TRAFFIC_GREEN = 3;
+    };
+    struct AutonomyObservation {
+      std_msgs::msg::Header header;
+
+      boolean perception_valid;
+
+      boolean imu_valid;
+
+      boolean speed_valid;
+
+      boolean stop_detected;
+
+      uint8 traffic_light;
+
+      float pitch_deg;
+
+      float roll_deg;
+
+      float yaw_deg;
+
+      float speed_kph;
+    };
+  };
+};

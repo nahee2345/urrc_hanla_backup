@@ -1,0 +1,91 @@
+[1.051s] Invoking command in '/home/qor/urrc_hanla/race_autonomy/ros2_ws/src/camera_yolo_inference': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/qor/urrc_hanla/.build/camera_yolo_inference/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/qor/urrc_hanla/.install/camera_yolo_inference/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../../.build/camera_yolo_inference build --build-base /home/qor/urrc_hanla/.build/camera_yolo_inference/build install --record /home/qor/urrc_hanla/.build/camera_yolo_inference/install.log --install-scripts $base/lib/camera_yolo_inference --single-version-externally-managed install_data
+[1.143s] /home/qor/.local/lib/python3.12/site-packages/setuptools/_distutils/dist.py:287: UserWarning: Unknown distribution option: 'tests_require'
+[1.143s]   warnings.warn(msg)
+[1.202s] running egg_info
+[1.212s] creating ../../../../.build/camera_yolo_inference/camera_yolo_inference.egg-info
+[1.212s] writing ../../../../.build/camera_yolo_inference/camera_yolo_inference.egg-info/PKG-INFO
+[1.212s] writing dependency_links to ../../../../.build/camera_yolo_inference/camera_yolo_inference.egg-info/dependency_links.txt
+[1.212s] writing entry points to ../../../../.build/camera_yolo_inference/camera_yolo_inference.egg-info/entry_points.txt
+[1.212s] writing requirements to ../../../../.build/camera_yolo_inference/camera_yolo_inference.egg-info/requires.txt
+[1.212s] writing top-level names to ../../../../.build/camera_yolo_inference/camera_yolo_inference.egg-info/top_level.txt
+[1.212s] writing manifest file '../../../../.build/camera_yolo_inference/camera_yolo_inference.egg-info/SOURCES.txt'
+[1.232s] reading manifest file '../../../../.build/camera_yolo_inference/camera_yolo_inference.egg-info/SOURCES.txt'
+[1.233s] writing manifest file '../../../../.build/camera_yolo_inference/camera_yolo_inference.egg-info/SOURCES.txt'
+[1.233s] running build
+[1.233s] running build_py
+[1.233s] creating /home/qor/urrc_hanla/.build/camera_yolo_inference/build/lib/camera_yolo_inference
+[1.233s] copying camera_yolo_inference/stop_line_depth_node.py -> /home/qor/urrc_hanla/.build/camera_yolo_inference/build/lib/camera_yolo_inference
+[1.233s] copying camera_yolo_inference/stop_detection.py -> /home/qor/urrc_hanla/.build/camera_yolo_inference/build/lib/camera_yolo_inference
+[1.233s] copying camera_yolo_inference/model_manifest.py -> /home/qor/urrc_hanla/.build/camera_yolo_inference/build/lib/camera_yolo_inference
+[1.233s] copying camera_yolo_inference/inference_diagnostics.py -> /home/qor/urrc_hanla/.build/camera_yolo_inference/build/lib/camera_yolo_inference
+[1.233s] copying camera_yolo_inference/image_contract.py -> /home/qor/urrc_hanla/.build/camera_yolo_inference/build/lib/camera_yolo_inference
+[1.233s] copying camera_yolo_inference/__init__.py -> /home/qor/urrc_hanla/.build/camera_yolo_inference/build/lib/camera_yolo_inference
+[1.233s] copying camera_yolo_inference/class_mapper.py -> /home/qor/urrc_hanla/.build/camera_yolo_inference/build/lib/camera_yolo_inference
+[1.233s] copying camera_yolo_inference/inference_backend.py -> /home/qor/urrc_hanla/.build/camera_yolo_inference/build/lib/camera_yolo_inference
+[1.233s] copying camera_yolo_inference/detection_schema.py -> /home/qor/urrc_hanla/.build/camera_yolo_inference/build/lib/camera_yolo_inference
+[1.233s] copying camera_yolo_inference/yellow_line_depth_node.py -> /home/qor/urrc_hanla/.build/camera_yolo_inference/build/lib/camera_yolo_inference
+[1.233s] copying camera_yolo_inference/perception_outputs.py -> /home/qor/urrc_hanla/.build/camera_yolo_inference/build/lib/camera_yolo_inference
+[1.233s] copying camera_yolo_inference/mask_postprocessor.py -> /home/qor/urrc_hanla/.build/camera_yolo_inference/build/lib/camera_yolo_inference
+[1.233s] copying camera_yolo_inference/camera_yolo_inference_node.py -> /home/qor/urrc_hanla/.build/camera_yolo_inference/build/lib/camera_yolo_inference
+[1.233s] copying camera_yolo_inference/debug_renderer.py -> /home/qor/urrc_hanla/.build/camera_yolo_inference/build/lib/camera_yolo_inference
+[1.233s] copying camera_yolo_inference/ros_image.py -> /home/qor/urrc_hanla/.build/camera_yolo_inference/build/lib/camera_yolo_inference
+[1.233s] running install
+[1.236s] running install_lib
+[1.245s] creating /home/qor/urrc_hanla/.install/camera_yolo_inference/lib/python3.12/site-packages/camera_yolo_inference
+[1.246s] copying /home/qor/urrc_hanla/.build/camera_yolo_inference/build/lib/camera_yolo_inference/stop_line_depth_node.py -> /home/qor/urrc_hanla/.install/camera_yolo_inference/lib/python3.12/site-packages/camera_yolo_inference
+[1.246s] copying /home/qor/urrc_hanla/.build/camera_yolo_inference/build/lib/camera_yolo_inference/stop_detection.py -> /home/qor/urrc_hanla/.install/camera_yolo_inference/lib/python3.12/site-packages/camera_yolo_inference
+[1.246s] copying /home/qor/urrc_hanla/.build/camera_yolo_inference/build/lib/camera_yolo_inference/model_manifest.py -> /home/qor/urrc_hanla/.install/camera_yolo_inference/lib/python3.12/site-packages/camera_yolo_inference
+[1.246s] copying /home/qor/urrc_hanla/.build/camera_yolo_inference/build/lib/camera_yolo_inference/inference_diagnostics.py -> /home/qor/urrc_hanla/.install/camera_yolo_inference/lib/python3.12/site-packages/camera_yolo_inference
+[1.246s] copying /home/qor/urrc_hanla/.build/camera_yolo_inference/build/lib/camera_yolo_inference/image_contract.py -> /home/qor/urrc_hanla/.install/camera_yolo_inference/lib/python3.12/site-packages/camera_yolo_inference
+[1.246s] copying /home/qor/urrc_hanla/.build/camera_yolo_inference/build/lib/camera_yolo_inference/__init__.py -> /home/qor/urrc_hanla/.install/camera_yolo_inference/lib/python3.12/site-packages/camera_yolo_inference
+[1.246s] copying /home/qor/urrc_hanla/.build/camera_yolo_inference/build/lib/camera_yolo_inference/class_mapper.py -> /home/qor/urrc_hanla/.install/camera_yolo_inference/lib/python3.12/site-packages/camera_yolo_inference
+[1.246s] copying /home/qor/urrc_hanla/.build/camera_yolo_inference/build/lib/camera_yolo_inference/inference_backend.py -> /home/qor/urrc_hanla/.install/camera_yolo_inference/lib/python3.12/site-packages/camera_yolo_inference
+[1.246s] copying /home/qor/urrc_hanla/.build/camera_yolo_inference/build/lib/camera_yolo_inference/detection_schema.py -> /home/qor/urrc_hanla/.install/camera_yolo_inference/lib/python3.12/site-packages/camera_yolo_inference
+[1.246s] copying /home/qor/urrc_hanla/.build/camera_yolo_inference/build/lib/camera_yolo_inference/yellow_line_depth_node.py -> /home/qor/urrc_hanla/.install/camera_yolo_inference/lib/python3.12/site-packages/camera_yolo_inference
+[1.246s] copying /home/qor/urrc_hanla/.build/camera_yolo_inference/build/lib/camera_yolo_inference/perception_outputs.py -> /home/qor/urrc_hanla/.install/camera_yolo_inference/lib/python3.12/site-packages/camera_yolo_inference
+[1.246s] copying /home/qor/urrc_hanla/.build/camera_yolo_inference/build/lib/camera_yolo_inference/mask_postprocessor.py -> /home/qor/urrc_hanla/.install/camera_yolo_inference/lib/python3.12/site-packages/camera_yolo_inference
+[1.246s] copying /home/qor/urrc_hanla/.build/camera_yolo_inference/build/lib/camera_yolo_inference/camera_yolo_inference_node.py -> /home/qor/urrc_hanla/.install/camera_yolo_inference/lib/python3.12/site-packages/camera_yolo_inference
+[1.246s] copying /home/qor/urrc_hanla/.build/camera_yolo_inference/build/lib/camera_yolo_inference/debug_renderer.py -> /home/qor/urrc_hanla/.install/camera_yolo_inference/lib/python3.12/site-packages/camera_yolo_inference
+[1.246s] copying /home/qor/urrc_hanla/.build/camera_yolo_inference/build/lib/camera_yolo_inference/ros_image.py -> /home/qor/urrc_hanla/.install/camera_yolo_inference/lib/python3.12/site-packages/camera_yolo_inference
+[1.246s] byte-compiling /home/qor/urrc_hanla/.install/camera_yolo_inference/lib/python3.12/site-packages/camera_yolo_inference/stop_line_depth_node.py to stop_line_depth_node.cpython-312.pyc
+[1.247s] byte-compiling /home/qor/urrc_hanla/.install/camera_yolo_inference/lib/python3.12/site-packages/camera_yolo_inference/stop_detection.py to stop_detection.cpython-312.pyc
+[1.247s] byte-compiling /home/qor/urrc_hanla/.install/camera_yolo_inference/lib/python3.12/site-packages/camera_yolo_inference/model_manifest.py to model_manifest.cpython-312.pyc
+[1.247s] byte-compiling /home/qor/urrc_hanla/.install/camera_yolo_inference/lib/python3.12/site-packages/camera_yolo_inference/inference_diagnostics.py to inference_diagnostics.cpython-312.pyc
+[1.248s] byte-compiling /home/qor/urrc_hanla/.install/camera_yolo_inference/lib/python3.12/site-packages/camera_yolo_inference/image_contract.py to image_contract.cpython-312.pyc
+[1.248s] byte-compiling /home/qor/urrc_hanla/.install/camera_yolo_inference/lib/python3.12/site-packages/camera_yolo_inference/__init__.py to __init__.cpython-312.pyc
+[1.248s] byte-compiling /home/qor/urrc_hanla/.install/camera_yolo_inference/lib/python3.12/site-packages/camera_yolo_inference/class_mapper.py to class_mapper.cpython-312.pyc
+[1.249s] byte-compiling /home/qor/urrc_hanla/.install/camera_yolo_inference/lib/python3.12/site-packages/camera_yolo_inference/inference_backend.py to inference_backend.cpython-312.pyc
+[1.250s] byte-compiling /home/qor/urrc_hanla/.install/camera_yolo_inference/lib/python3.12/site-packages/camera_yolo_inference/detection_schema.py to detection_schema.cpython-312.pyc
+[1.250s] byte-compiling /home/qor/urrc_hanla/.install/camera_yolo_inference/lib/python3.12/site-packages/camera_yolo_inference/yellow_line_depth_node.py to yellow_line_depth_node.cpython-312.pyc
+[1.250s] byte-compiling /home/qor/urrc_hanla/.install/camera_yolo_inference/lib/python3.12/site-packages/camera_yolo_inference/perception_outputs.py to perception_outputs.cpython-312.pyc
+[1.250s] byte-compiling /home/qor/urrc_hanla/.install/camera_yolo_inference/lib/python3.12/site-packages/camera_yolo_inference/mask_postprocessor.py to mask_postprocessor.cpython-312.pyc
+[1.251s] byte-compiling /home/qor/urrc_hanla/.install/camera_yolo_inference/lib/python3.12/site-packages/camera_yolo_inference/camera_yolo_inference_node.py to camera_yolo_inference_node.cpython-312.pyc
+[1.253s] byte-compiling /home/qor/urrc_hanla/.install/camera_yolo_inference/lib/python3.12/site-packages/camera_yolo_inference/debug_renderer.py to debug_renderer.cpython-312.pyc
+[1.254s] byte-compiling /home/qor/urrc_hanla/.install/camera_yolo_inference/lib/python3.12/site-packages/camera_yolo_inference/ros_image.py to ros_image.cpython-312.pyc
+[1.254s] running install_data
+[1.254s] creating /home/qor/urrc_hanla/.install/camera_yolo_inference/share/ament_index/resource_index/packages
+[1.254s] copying resource/camera_yolo_inference -> /home/qor/urrc_hanla/.install/camera_yolo_inference/share/ament_index/resource_index/packages
+[1.254s] copying package.xml -> /home/qor/urrc_hanla/.install/camera_yolo_inference/share/camera_yolo_inference
+[1.254s] copying README.md -> /home/qor/urrc_hanla/.install/camera_yolo_inference/share/camera_yolo_inference
+[1.254s] creating /home/qor/urrc_hanla/.install/camera_yolo_inference/share/camera_yolo_inference/config
+[1.255s] copying config/class_manifest.yaml -> /home/qor/urrc_hanla/.install/camera_yolo_inference/share/camera_yolo_inference/config
+[1.255s] copying config/yolo_inference.yaml -> /home/qor/urrc_hanla/.install/camera_yolo_inference/share/camera_yolo_inference/config
+[1.255s] creating /home/qor/urrc_hanla/.install/camera_yolo_inference/share/camera_yolo_inference/launch
+[1.255s] copying launch/d456_yolo_perception.launch.py -> /home/qor/urrc_hanla/.install/camera_yolo_inference/share/camera_yolo_inference/launch
+[1.255s] copying launch/yolo_inference.launch.py -> /home/qor/urrc_hanla/.install/camera_yolo_inference/share/camera_yolo_inference/launch
+[1.255s] creating /home/qor/urrc_hanla/.install/camera_yolo_inference/share/camera_yolo_inference/models
+[1.255s] copying models/hanla_yolo11n_seg_best.pt -> /home/qor/urrc_hanla/.install/camera_yolo_inference/share/camera_yolo_inference/models
+[1.257s] copying models/hanla_yolo11n_seg_best.engine -> /home/qor/urrc_hanla/.install/camera_yolo_inference/share/camera_yolo_inference/models
+[1.259s] copying models/hanla_yolo11n_seg_best.engine.json -> /home/qor/urrc_hanla/.install/camera_yolo_inference/share/camera_yolo_inference/models
+[1.259s] creating /home/qor/urrc_hanla/.install/camera_yolo_inference/share/camera_yolo_inference/tools
+[1.259s] copying tools/validate_mask_aggregation.py -> /home/qor/urrc_hanla/.install/camera_yolo_inference/share/camera_yolo_inference/tools
+[1.259s] copying tools/benchmark_backends.py -> /home/qor/urrc_hanla/.install/camera_yolo_inference/share/camera_yolo_inference/tools
+[1.259s] copying tools/export_tensorrt_engine.py -> /home/qor/urrc_hanla/.install/camera_yolo_inference/share/camera_yolo_inference/tools
+[1.259s] running install_egg_info
+[1.269s] Copying ../../../../.build/camera_yolo_inference/camera_yolo_inference.egg-info to /home/qor/urrc_hanla/.install/camera_yolo_inference/lib/python3.12/site-packages/camera_yolo_inference-0.1.0-py3.12.egg-info
+[1.270s] running install_scripts
+[1.291s] Installing camera_yolo_inference_node script to /home/qor/urrc_hanla/.install/camera_yolo_inference/lib/camera_yolo_inference
+[1.291s] Installing stop_line_depth_node script to /home/qor/urrc_hanla/.install/camera_yolo_inference/lib/camera_yolo_inference
+[1.291s] Installing yellow_line_depth_node script to /home/qor/urrc_hanla/.install/camera_yolo_inference/lib/camera_yolo_inference
+[1.291s] writing list of installed files to '/home/qor/urrc_hanla/.build/camera_yolo_inference/install.log'
+[1.305s] Invoked command in '/home/qor/urrc_hanla/race_autonomy/ros2_ws/src/camera_yolo_inference' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/qor/urrc_hanla/.build/camera_yolo_inference/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/qor/urrc_hanla/.install/camera_yolo_inference/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../../.build/camera_yolo_inference build --build-base /home/qor/urrc_hanla/.build/camera_yolo_inference/build install --record /home/qor/urrc_hanla/.build/camera_yolo_inference/install.log --install-scripts $base/lib/camera_yolo_inference --single-version-externally-managed install_data

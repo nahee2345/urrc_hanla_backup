@@ -1,0 +1,13 @@
+Metadata-Version: 2.4
+Name: camera_yolo_inference
+Version: 0.1.0
+Summary: Ultralytics segmentation adapter preserving D456 raw coordinates
+Maintainer: ww
+Maintainer-email: ww@todo.todo
+License: Apache-2.0
+Requires-Dist: setuptools
+Dynamic: license
+Dynamic: maintainer
+Dynamic: maintainer-email
+Dynamic: requires-dist
+Dynamic: summary

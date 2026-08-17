@@ -1,0 +1,54 @@
+/home/qor/.local/lib/python3.12/site-packages/setuptools/_distutils/dist.py:287: UserWarning: Unknown distribution option: 'tests_require'
+  warnings.warn(msg)
+running egg_info
+creating ../../../../.build/camera_navigation/camera_navigation.egg-info
+writing ../../../../.build/camera_navigation/camera_navigation.egg-info/PKG-INFO
+writing dependency_links to ../../../../.build/camera_navigation/camera_navigation.egg-info/dependency_links.txt
+writing entry points to ../../../../.build/camera_navigation/camera_navigation.egg-info/entry_points.txt
+writing requirements to ../../../../.build/camera_navigation/camera_navigation.egg-info/requires.txt
+writing top-level names to ../../../../.build/camera_navigation/camera_navigation.egg-info/top_level.txt
+writing manifest file '../../../../.build/camera_navigation/camera_navigation.egg-info/SOURCES.txt'
+reading manifest file '../../../../.build/camera_navigation/camera_navigation.egg-info/SOURCES.txt'
+writing manifest file '../../../../.build/camera_navigation/camera_navigation.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/qor/urrc_hanla/.build/camera_navigation/build/lib/camera_navigation
+copying camera_navigation/turn_path_generator.py -> /home/qor/urrc_hanla/.build/camera_navigation/build/lib/camera_navigation
+copying camera_navigation/speed_planner.py -> /home/qor/urrc_hanla/.build/camera_navigation/build/lib/camera_navigation
+copying camera_navigation/__init__.py -> /home/qor/urrc_hanla/.build/camera_navigation/build/lib/camera_navigation
+copying camera_navigation/pure_pursuit.py -> /home/qor/urrc_hanla/.build/camera_navigation/build/lib/camera_navigation
+copying camera_navigation/camera_path_controller_node.py -> /home/qor/urrc_hanla/.build/camera_navigation/build/lib/camera_navigation
+copying camera_navigation/path_generator.py -> /home/qor/urrc_hanla/.build/camera_navigation/build/lib/camera_navigation
+copying camera_navigation/path_validator.py -> /home/qor/urrc_hanla/.build/camera_navigation/build/lib/camera_navigation
+copying camera_navigation/ros_image.py -> /home/qor/urrc_hanla/.build/camera_navigation/build/lib/camera_navigation
+running install
+running install_lib
+creating /home/qor/urrc_hanla/.install/camera_navigation/lib/python3.12/site-packages/camera_navigation
+copying /home/qor/urrc_hanla/.build/camera_navigation/build/lib/camera_navigation/turn_path_generator.py -> /home/qor/urrc_hanla/.install/camera_navigation/lib/python3.12/site-packages/camera_navigation
+copying /home/qor/urrc_hanla/.build/camera_navigation/build/lib/camera_navigation/speed_planner.py -> /home/qor/urrc_hanla/.install/camera_navigation/lib/python3.12/site-packages/camera_navigation
+copying /home/qor/urrc_hanla/.build/camera_navigation/build/lib/camera_navigation/__init__.py -> /home/qor/urrc_hanla/.install/camera_navigation/lib/python3.12/site-packages/camera_navigation
+copying /home/qor/urrc_hanla/.build/camera_navigation/build/lib/camera_navigation/pure_pursuit.py -> /home/qor/urrc_hanla/.install/camera_navigation/lib/python3.12/site-packages/camera_navigation
+copying /home/qor/urrc_hanla/.build/camera_navigation/build/lib/camera_navigation/camera_path_controller_node.py -> /home/qor/urrc_hanla/.install/camera_navigation/lib/python3.12/site-packages/camera_navigation
+copying /home/qor/urrc_hanla/.build/camera_navigation/build/lib/camera_navigation/path_generator.py -> /home/qor/urrc_hanla/.install/camera_navigation/lib/python3.12/site-packages/camera_navigation
+copying /home/qor/urrc_hanla/.build/camera_navigation/build/lib/camera_navigation/path_validator.py -> /home/qor/urrc_hanla/.install/camera_navigation/lib/python3.12/site-packages/camera_navigation
+copying /home/qor/urrc_hanla/.build/camera_navigation/build/lib/camera_navigation/ros_image.py -> /home/qor/urrc_hanla/.install/camera_navigation/lib/python3.12/site-packages/camera_navigation
+byte-compiling /home/qor/urrc_hanla/.install/camera_navigation/lib/python3.12/site-packages/camera_navigation/turn_path_generator.py to turn_path_generator.cpython-312.pyc
+byte-compiling /home/qor/urrc_hanla/.install/camera_navigation/lib/python3.12/site-packages/camera_navigation/speed_planner.py to speed_planner.cpython-312.pyc
+byte-compiling /home/qor/urrc_hanla/.install/camera_navigation/lib/python3.12/site-packages/camera_navigation/__init__.py to __init__.cpython-312.pyc
+byte-compiling /home/qor/urrc_hanla/.install/camera_navigation/lib/python3.12/site-packages/camera_navigation/pure_pursuit.py to pure_pursuit.cpython-312.pyc
+byte-compiling /home/qor/urrc_hanla/.install/camera_navigation/lib/python3.12/site-packages/camera_navigation/camera_path_controller_node.py to camera_path_controller_node.cpython-312.pyc
+byte-compiling /home/qor/urrc_hanla/.install/camera_navigation/lib/python3.12/site-packages/camera_navigation/path_generator.py to path_generator.cpython-312.pyc
+byte-compiling /home/qor/urrc_hanla/.install/camera_navigation/lib/python3.12/site-packages/camera_navigation/path_validator.py to path_validator.cpython-312.pyc
+byte-compiling /home/qor/urrc_hanla/.install/camera_navigation/lib/python3.12/site-packages/camera_navigation/ros_image.py to ros_image.cpython-312.pyc
+running install_data
+creating /home/qor/urrc_hanla/.install/camera_navigation/share/ament_index/resource_index/packages
+copying resource/camera_navigation -> /home/qor/urrc_hanla/.install/camera_navigation/share/ament_index/resource_index/packages
+copying package.xml -> /home/qor/urrc_hanla/.install/camera_navigation/share/camera_navigation
+copying README.md -> /home/qor/urrc_hanla/.install/camera_navigation/share/camera_navigation
+creating /home/qor/urrc_hanla/.install/camera_navigation/share/camera_navigation/launch
+creating /home/qor/urrc_hanla/.install/camera_navigation/share/camera_navigation/config
+running install_egg_info
+Copying ../../../../.build/camera_navigation/camera_navigation.egg-info to /home/qor/urrc_hanla/.install/camera_navigation/lib/python3.12/site-packages/camera_navigation-0.1.0-py3.12.egg-info
+running install_scripts
+Installing camera_path_controller_node script to /home/qor/urrc_hanla/.install/camera_navigation/lib/camera_navigation
+writing list of installed files to '/home/qor/urrc_hanla/.build/camera_navigation/install.log'

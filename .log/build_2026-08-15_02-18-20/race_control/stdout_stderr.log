@@ -1,0 +1,62 @@
+/home/qor/.local/lib/python3.12/site-packages/setuptools/_distutils/dist.py:287: UserWarning: Unknown distribution option: 'tests_require'
+  warnings.warn(msg)
+running egg_info
+creating ../../../../.build/race_control/race_control.egg-info
+writing ../../../../.build/race_control/race_control.egg-info/PKG-INFO
+writing dependency_links to ../../../../.build/race_control/race_control.egg-info/dependency_links.txt
+writing entry points to ../../../../.build/race_control/race_control.egg-info/entry_points.txt
+writing requirements to ../../../../.build/race_control/race_control.egg-info/requires.txt
+writing top-level names to ../../../../.build/race_control/race_control.egg-info/top_level.txt
+writing manifest file '../../../../.build/race_control/race_control.egg-info/SOURCES.txt'
+reading manifest file '../../../../.build/race_control/race_control.egg-info/SOURCES.txt'
+writing manifest file '../../../../.build/race_control/race_control.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/qor/urrc_hanla/.build/race_control/build/lib/race_control
+copying race_control/course_mission_node.py -> /home/qor/urrc_hanla/.build/race_control/build/lib/race_control
+copying race_control/course_mission.py -> /home/qor/urrc_hanla/.build/race_control/build/lib/race_control
+copying race_control/__init__.py -> /home/qor/urrc_hanla/.build/race_control/build/lib/race_control
+copying race_control/pure_pursuit.py -> /home/qor/urrc_hanla/.build/race_control/build/lib/race_control
+copying race_control/gazebo_command_adapter_node.py -> /home/qor/urrc_hanla/.build/race_control/build/lib/race_control
+copying race_control/autonomy_output_node.py -> /home/qor/urrc_hanla/.build/race_control/build/lib/race_control
+copying race_control/pure_pursuit_node.py -> /home/qor/urrc_hanla/.build/race_control/build/lib/race_control
+running install
+running install_lib
+creating /home/qor/urrc_hanla/.install/race_control/lib/python3.12/site-packages/race_control
+copying /home/qor/urrc_hanla/.build/race_control/build/lib/race_control/course_mission_node.py -> /home/qor/urrc_hanla/.install/race_control/lib/python3.12/site-packages/race_control
+copying /home/qor/urrc_hanla/.build/race_control/build/lib/race_control/course_mission.py -> /home/qor/urrc_hanla/.install/race_control/lib/python3.12/site-packages/race_control
+copying /home/qor/urrc_hanla/.build/race_control/build/lib/race_control/__init__.py -> /home/qor/urrc_hanla/.install/race_control/lib/python3.12/site-packages/race_control
+copying /home/qor/urrc_hanla/.build/race_control/build/lib/race_control/pure_pursuit.py -> /home/qor/urrc_hanla/.install/race_control/lib/python3.12/site-packages/race_control
+copying /home/qor/urrc_hanla/.build/race_control/build/lib/race_control/gazebo_command_adapter_node.py -> /home/qor/urrc_hanla/.install/race_control/lib/python3.12/site-packages/race_control
+copying /home/qor/urrc_hanla/.build/race_control/build/lib/race_control/autonomy_output_node.py -> /home/qor/urrc_hanla/.install/race_control/lib/python3.12/site-packages/race_control
+copying /home/qor/urrc_hanla/.build/race_control/build/lib/race_control/pure_pursuit_node.py -> /home/qor/urrc_hanla/.install/race_control/lib/python3.12/site-packages/race_control
+byte-compiling /home/qor/urrc_hanla/.install/race_control/lib/python3.12/site-packages/race_control/course_mission_node.py to course_mission_node.cpython-312.pyc
+byte-compiling /home/qor/urrc_hanla/.install/race_control/lib/python3.12/site-packages/race_control/course_mission.py to course_mission.cpython-312.pyc
+byte-compiling /home/qor/urrc_hanla/.install/race_control/lib/python3.12/site-packages/race_control/__init__.py to __init__.cpython-312.pyc
+byte-compiling /home/qor/urrc_hanla/.install/race_control/lib/python3.12/site-packages/race_control/pure_pursuit.py to pure_pursuit.cpython-312.pyc
+byte-compiling /home/qor/urrc_hanla/.install/race_control/lib/python3.12/site-packages/race_control/gazebo_command_adapter_node.py to gazebo_command_adapter_node.cpython-312.pyc
+byte-compiling /home/qor/urrc_hanla/.install/race_control/lib/python3.12/site-packages/race_control/autonomy_output_node.py to autonomy_output_node.cpython-312.pyc
+byte-compiling /home/qor/urrc_hanla/.install/race_control/lib/python3.12/site-packages/race_control/pure_pursuit_node.py to pure_pursuit_node.cpython-312.pyc
+running install_data
+creating /home/qor/urrc_hanla/.install/race_control/share/ament_index/resource_index/packages
+copying resource/race_control -> /home/qor/urrc_hanla/.install/race_control/share/ament_index/resource_index/packages
+copying package.xml -> /home/qor/urrc_hanla/.install/race_control/share/race_control
+creating /home/qor/urrc_hanla/.install/race_control/share/race_control/launch
+copying launch/camera_pure_pursuit.launch.py -> /home/qor/urrc_hanla/.install/race_control/share/race_control/launch
+copying launch/autonomy_output.launch.py -> /home/qor/urrc_hanla/.install/race_control/share/race_control/launch
+copying launch/pure_pursuit.launch.py -> /home/qor/urrc_hanla/.install/race_control/share/race_control/launch
+copying launch/course_autonomy.launch.py -> /home/qor/urrc_hanla/.install/race_control/share/race_control/launch
+copying launch/course_mission.launch.py -> /home/qor/urrc_hanla/.install/race_control/share/race_control/launch
+copying launch/autonomy_stack.launch.py -> /home/qor/urrc_hanla/.install/race_control/share/race_control/launch
+creating /home/qor/urrc_hanla/.install/race_control/share/race_control/config
+copying config/course_mission.yaml -> /home/qor/urrc_hanla/.install/race_control/share/race_control/config
+copying config/autonomy_output.yaml -> /home/qor/urrc_hanla/.install/race_control/share/race_control/config
+copying config/pure_pursuit.yaml -> /home/qor/urrc_hanla/.install/race_control/share/race_control/config
+running install_egg_info
+Copying ../../../../.build/race_control/race_control.egg-info to /home/qor/urrc_hanla/.install/race_control/lib/python3.12/site-packages/race_control-0.1.0-py3.12.egg-info
+running install_scripts
+Installing autonomy_output script to /home/qor/urrc_hanla/.install/race_control/lib/race_control
+Installing course_mission script to /home/qor/urrc_hanla/.install/race_control/lib/race_control
+Installing gazebo_command_adapter script to /home/qor/urrc_hanla/.install/race_control/lib/race_control
+Installing pure_pursuit script to /home/qor/urrc_hanla/.install/race_control/lib/race_control
+writing list of installed files to '/home/qor/urrc_hanla/.build/race_control/install.log'

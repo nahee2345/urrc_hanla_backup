@@ -1,0 +1,358 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║   교차로 Controller 실차 테스트 실행 + gps_drive→mcu_drive 이름 변경           ║
+║   대상 WS: ~/mmission_ws   (교차로 로직은 mission_manager 패키지)              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+■ 먼저 이해할 구조 (중요)
+  · 교차로 로직(intersection.py)의 실제 출력 =  /target_speed_mps (Float32, m/s)
+                                              /target_steering_deg (Float32, deg, 좌+/우-)
+    → 이건 motor_driver / cmd_bridge 가 구독해 MCU로 보낸다.
+  · 교차로 기동 선택 =  /intersection/command (std_msgs/UInt8)
+        0 = NONE(초기화)   1 = STRAIGHT   2 = RIGHT   3 = LEFT
+    → "하나의 방위에서 직진/좌/우가 다 나올 수 있다"를 이 명령 토픽으로 해결.
+      방위 자동선택이 아니라, 통과할 때마다 원하는 기동을 명령으로 넣는다.
+  · IMU 입력(구독만) =  /imu/relative_yaw_deg (Float32, 도),  /imu/valid (Bool)
+        → imu_manager 워크스페이스에서 별도 실행해 공급. 계산 로직 복제 없음.
+  · gps_drive / gps_wheel 은 교차로와 "무관". 구형 gps_route_follower 전용.
+    (아래 이름 변경 섹션에서 따로 다룸)
+
+
+════════════════════════════════════════════════════════════════════════════════
+   PART A — 실차 테스트 실행 (경우별)
+════════════════════════════════════════════════════════════════════════════════
+
+────────────────────────────────────────────────────────────────────────────────
+0단계 — 빌드 & 소싱 (터미널 열 때마다 source)
+────────────────────────────────────────────────────────────────────────────────
+cd ~/mmission_ws
+colcon build --packages-select mission_manager
+source /opt/ros/jazzy/setup.bash
+source install/setup.bash
+
+────────────────────────────────────────────────────────────────────────────────
+1단계 — IMU 공급 (교차로 회전판정에 필수)
+────────────────────────────────────────────────────────────────────────────────
+# 터미널 1: IMU manager (imu_manager 워크스페이스에서)
+cd ~/imu_ws          # imu_manager가 있는 워크스페이스 경로로
+source /opt/ros/jazzy/setup.bash
+source install/setup.bash
+ros2 run imu_manager imu_manager_node
+
+# 확인 (터미널 2)
+ros2 topic echo /imu/relative_yaw_deg      # 차/IMU를 좌우로 돌리면 값이 변함
+ros2 topic echo /imu/valid                 # true 여야 함
+ros2 topic hz /imu/relative_yaw_deg        # 주기 확인
+  ★ 좌우로 90° 돌려보며 "좌회전 시 부호"를 기록 → 2단계 YAML 값에 반영.
+
+────────────────────────────────────────────────────────────────────────────────
+2단계 — 교차로 파라미터 실측 반영 (config/mission.yaml)
+────────────────────────────────────────────────────────────────────────────────
+  ※ 좌/우 목표 yaw 부호는 1단계 실측대로. 아래는 예시값이니 반드시 확인 후 수정.
+
+intersection.enabled: true
+intersection.right_target_yaw_deg: -90.0    # 실측 부호로 수정
+intersection.right_yaw_tolerance_deg: 5.0
+intersection.left_target_yaw_deg: 90.0      # 실측 부호로 수정
+intersection.left_yaw_tolerance_deg: 5.0
+intersection.stabilize_s: 1.0               # 회전 후 steer=0 유지시간
+intersection.straight_timeout_s: 5.0        # 직진 종료 timeout(위치이탈 없을 때)
+intersection.imu_invalid_abort_s: 0.5       # IMU invalid 지속 시 안전정지
+intersection.imu_stale_timeout_s: 0.3       # 메시지 끊김 판정
+intersection.use_position_exit: false       # GPS 있으면 true (원 이탈판정)
+
+────────────────────────────────────────────────────────────────────────────────
+3단계 — mission_manager 본체 실행
+────────────────────────────────────────────────────────────────────────────────
+# 터미널 3
+cd ~/mmission_ws && source install/setup.bash
+ros2 launch mission_manager mission.launch.py
+  (GPS/카메라/인코더 없어도 뜬다. IMU만 있으면 교차로 검증 가능.)
+
+
+──────────────────────────────────────────────────────────────
+경우 ① — 바퀴 든 상태에서 출력만 확인 (가장 먼저, 안전)
+──────────────────────────────────────────────────────────────
+# 터미널 4: 출력 모니터
+cd ~/mmission_ws && source install/setup.bash
+ros2 topic echo /target_speed_mps &
+ros2 topic echo /target_steering_deg &
+ros2 topic echo /drive_state
+
+# 터미널 5: 명령 발행
+ros2 topic pub --once /intersection/command std_msgs/msg/UInt8 "{data: 2}"   # RIGHT
+  기대: drive_state=INTERSECTION, steering이 우(-)로 최대치,
+        회전완료 로그 후 steering=0 복귀.
+ros2 topic pub --once /intersection/command std_msgs/msg/UInt8 "{data: 3}"   # LEFT
+ros2 topic pub --once /intersection/command std_msgs/msg/UInt8 "{data: 1}"   # STRAIGHT
+ros2 topic pub --once /intersection/command std_msgs/msg/UInt8 "{data: 0}"   # NONE(리셋)
+
+──────────────────────────────────────────────────────────────
+경우 ② — 저속 실주행 (STRAIGHT/RIGHT/LEFT 각 5회 이상)
+──────────────────────────────────────────────────────────────
+  ※ 매번 같은 위치·방향에 차를 두고 반복. 사람이 항상 비상정지 가능하게.
+# 터미널 5
+ros2 topic pub --once /intersection/command std_msgs/msg/UInt8 "{data: 2}"   # RIGHT (또는 1/3)
+  정상 로그:
+    교차로 기동 시작: command=RIGHT (yaw0=...)
+    [RIGHT] 회전완료 (Δyaw=...°, 목표-90±5°) → 안정화 직진
+    [RIGHT] 교차로 이탈 완료 → 경로 재포착
+  확인 포인트: 코너 침범/오버슛 여부, 5회 반복 정밀도.
+
+──────────────────────────────────────────────────────────────
+경우 ③ — latch 시험 (기동 중 다른 명령 무시)
+──────────────────────────────────────────────────────────────
+ros2 topic pub --once /intersection/command std_msgs/msg/UInt8 "{data: 3}"   # LEFT
+# 회전 도중 즉시:
+ros2 topic pub --once /intersection/command std_msgs/msg/UInt8 "{data: 2}"   # RIGHT
+  기대: "기동 중(active=LEFT) 상태에서 RIGHT 수신 → 무시" 로그, LEFT 끝까지 진행.
+
+──────────────────────────────────────────────────────────────
+경우 ④ — 잘못된 명령 무시
+──────────────────────────────────────────────────────────────
+ros2 topic pub --once /intersection/command std_msgs/msg/UInt8 "{data: 9}"
+  기대: "잘못된 intersection command=9 무시" 경고만, 상태 불변.
+
+──────────────────────────────────────────────────────────────
+경우 ⑤ — IMU 장애 안전정지
+──────────────────────────────────────────────────────────────
+# IMU 노드를 잠깐 죽이거나 /imu/valid 를 false로 몇 초 발행
+ros2 topic pub -r 10 /imu/valid std_msgs/msg/Bool "{data: false}"
+  기대: imu_invalid_abort_s 경과 후
+    "교차로 안전정지(ERROR): IMU invalid/stale ... → drive/steer=0 고정"
+    이후 /target_speed_mps, /target_steering_deg = 0 유지.
+# 복구:
+ros2 topic pub --once /intersection/command std_msgs/msg/UInt8 "{data: 0}"   # NONE
+  기대: "NONE 수신 → ERROR 해제, IDLE 복귀"
+
+──────────────────────────────────────────────────────────────
+경우 ⑥ — 대회 순서 재현 (8자 도로 없이, 재배치하며)
+──────────────────────────────────────────────────────────────
+# 1번째 교차로: 직진
+ros2 topic pub --once /intersection/command std_msgs/msg/UInt8 "{data: 1}"
+# (완료 후 차량을 다음 시작점으로 재배치)
+# 2번째: 우회전
+ros2 topic pub --once /intersection/command std_msgs/msg/UInt8 "{data: 2}"
+# 3번째: 좌회전
+ros2 topic pub --once /intersection/command std_msgs/msg/UInt8 "{data: 3}"
+# 4번째: 좌회전
+ros2 topic pub --once /intersection/command std_msgs/msg/UInt8 "{data: 3}"
+
+────────────────────────────────────────────────────────────────────────────────
+단위 테스트 (하드웨어 불필요, 언제든)
+────────────────────────────────────────────────────────────────────────────────
+cd ~/mmission_ws/src/mission_manager
+python3 -m pytest test/test_intersection_command.py -q
+
+
+════════════════════════════════════════════════════════════════════════════════
+   PART B — gps_drive → mcu_drive 이름 변경  (gps_wheel → mcu_wheel 도 함께)
+════════════════════════════════════════════════════════════════════════════════
+
+■ 무엇을 바꾸는가
+  gps_drive/gps_wheel 은 "구형 gps_route_follower" 경로에서만 쓰는 토픽 이름이다.
+  (교차로 로직과 무관. 교차로는 /target_speed_mps, /target_steering_deg 를 쓴다.)
+  단순 문자열 치환이며, 아래 파일만 바꾸면 된다. 메시지 타입/로직 변경 없음.
+
+■ 바꿔야 할 위치 (총 4파일)
+  1) config/gps_route.yaml
+       gps_drive_topic: /gps_drive   →   gps_drive_topic: /mcu_drive
+       gps_wheel_topic: /gps_wheel   →   gps_wheel_topic: /mcu_wheel
+     (파라미터 "키" 이름 gps_drive_topic 은 그대로 두고 "값"만 /mcu_drive 로.
+      키까지 바꾸려면 gps_route_follower_node.py 의 self._p("gps_drive_topic")
+      참조도 같이 바꿔야 하므로, 값만 바꾸는 게 가장 안전.)
+
+  2) mission_manager/fake_gps_sim_node.py  (시뮬레이터가 구독하는 쪽)
+       self.create_subscription(Float32, "/gps_drive", ...)  →  "/mcu_drive"
+       self.create_subscription(Int32,   "/gps_wheel", ...)  →  "/mcu_wheel"
+
+  3) mission_manager/test_imu_publisher_node.py  (테스트 퍼블리셔)
+       self.create_subscription(Float32, '/gps_drive', ...)  →  '/mcu_drive'
+
+  4) config/twist_mux.yaml  (해당되면)
+       topics 아래 gps_drive: 블록은 "라벨"이라 굳이 안 바꿔도 되지만,
+       그 안의  topic: cmd_vel_gps 는 별개 토픽이라 건드리지 말 것.
+       (twist_mux 의 gps_drive 는 /gps_drive 토픽이 아니라 mux 입력 라벨임 — 혼동 주의)
+
+■ 안전한 치환 방법 (워크스페이스 루트에서)
+  ※ 먼저 어디에 있는지 눈으로 확인:
+    cd ~/mmission_ws/src/mission_manager
+    grep -rn "/gps_drive\|/gps_wheel" --include=*.py --include=*.yaml . | grep -v build
+
+  ※ 값만 일괄 치환(토픽 문자열만). twist_mux.yaml 은 제외하고 수동 확인 권장:
+    # gps_route.yaml
+    sed -i 's#/gps_drive#/mcu_drive#g; s#/gps_wheel#/mcu_wheel#g' config/gps_route.yaml
+    # 시뮬/테스트 퍼블리셔
+    sed -i 's#/gps_drive#/mcu_drive#g; s#/gps_wheel#/mcu_wheel#g' mission_manager/fake_gps_sim_node.py
+    sed -i "s#/gps_drive#/mcu_drive#g" mission_manager/test_imu_publisher_node.py
+
+■ 변경 후
+  cd ~/mmission_ws
+  colcon build --packages-select mission_manager
+  source install/setup.bash
+  # 확인: 옛 이름이 안 남았는지
+  grep -rn "/gps_drive\|/gps_wheel" src/mission_manager --include=*.py --include=*.yaml | grep -v build
+  # 새 토픽으로 뜨는지 (gps_route_follower 계열을 띄웠을 때)
+  ros2 topic list | grep -E "mcu_drive|mcu_wheel"
+
+★ 주의: 이 이름 변경은 "교차로 실차 테스트"에는 영향 없다.
+  교차로는 /target_speed_mps, /target_steering_deg 를 쓰므로,
+  PART A는 이름 변경 여부와 무관하게 그대로 진행하면 된다.
+
+
+════════════════════════════════════════════════════════════════════════════════
+   PART C — 네 방향 × 직진/좌/우 전 방향 연습 & "교차로 경로 저장" 개념
+════════════════════════════════════════════════════════════════════════════════
+
+■ 먼저: 지금 구조에서 "교차로 경로 저장"은 필요 없다 (중요)
+  현재 교차로 로직은 command-latch 방식이다. 즉 교차로 기동(직진/좌/우)은
+  "저장된 경로"가 아니라 /intersection/command 로 그 자리에서 결정된다.
+  위치기반(center/radius)은 use_position_exit=true 일 때 "종료 판정 보조"로만
+  쓰이고, 어떤 기동을 할지와는 무관하다.
+  → 연습에는 GPS도, 저장된 CSV도 필요 없다. IMU + 명령 발행이면 된다.
+
+  ┌─ "저장"의 두 가지 의미 구분 ───────────────────────────────────────────┐
+  │ 1) 교차로 회전 자체 연습  → 경로 저장 불필요. 차를 원하는 방향에 놓고    │
+  │    /intersection/command 발행. (이 PART C)                              │
+  │ 2) 대회 전체 코스 잇기     → 교차로 "사이"를 잇는 GPS 주행 경로를        │
+  │    route_recorder 로 녹화(별개 작업). 그 경로가 교차로 기동을 정하지     │
+  │    않는다 — 기동은 시퀀서/수동이 command 로 넣는다. (맨 아래 참고)       │
+  └────────────────────────────────────────────────────────────────────────┘
+
+■ 네 방향 × 직진/좌/우 = 12가지 전부 연습하는 법
+  교차로 로직은 "진입 방위"를 기동 선택에 쓰지 않으므로, 방향은 사람이
+  차를 그 방향으로 물리적으로 놓는 것으로 표현한다. 각 배치에서 세 명령을 시험.
+
+  준비: PART A 0~3단계로 IMU 공급 + mission_manager 실행해 둔 상태.
+        차를 교차로 중앙, "진입 방향"을 향하게 정지시킨다.
+
+  # 명령 (어느 방향 배치에서든 동일)
+  ros2 topic pub --once /intersection/command std_msgs/msg/UInt8 "{data: 1}"  # 직진
+  ros2 topic pub --once /intersection/command std_msgs/msg/UInt8 "{data: 2}"  # 우회전
+  ros2 topic pub --once /intersection/command std_msgs/msg/UInt8 "{data: 3}"  # 좌회전
+  # 각 시험 사이 리셋이 필요하면:
+  ros2 topic pub --once /intersection/command std_msgs/msg/UInt8 "{data: 0}"  # NONE
+
+  ── 연습 매트릭스 (차 배치 방향 × 명령) ────────────────────────────────
+    배치 방향   | 직진(1) | 우회전(2) | 좌회전(3)
+    ───────────┼─────────┼───────────┼──────────
+    북향 진입   |  □      |   □       |   □
+    동향 진입   |  □      |   □       |   □
+    남향 진입   |  □      |   □       |   □
+    서향 진입   |  □      |   □       |   □
+  ─────────────────────────────────────────────────────────────────────
+  각 칸마다 회전완료 로그 + steer 부호 + 오버슈트를 기록. 12칸 다 채우면
+  전 방향·전 기동 검증 완료.
+
+  ★ 방위와 무관하게 회전각은 동일(right_target_yaw_deg / left_target_yaw_deg).
+    즉 "북에서 좌회전"과 "남에서 좌회전"은 IMU 상대 yaw로는 같은 -90/+90 동작.
+    방향별로 결과가 달라지면 그건 IMU 부호/드리프트/노면 문제 → 그 방향 재점검.
+
+■ (선택) 위치기반 종료까지 함께 연습하려면
+  use_position_exit=true 로 두고, 교차로 중심을 center 로 준다.
+  중심 좌표는 GPS 캘리브레이션(intersection_calib)으로 뽑거나, 공터면 임의로.
+    config/mission.yaml:
+      intersection.use_position_exit: true
+      intersection_names: ["ix1"]
+      ix1.center: [<cx>, <cy>]
+      ix1.radius_m: 2.5
+  이 경우 회전 후 "원을 벗어나면" 종료(그 전엔 stabilize_s timeout fallback).
+  GPS 없이 순수 회전 연습만 할 거면 use_position_exit:false 로 두면 된다.
+
+■ 참고: 대회 전체 코스 경로 저장 (교차로 회전과 별개)
+  교차로 "사이" 이동은 GPS 주행이므로 route_recorder 로 녹화한다:
+    ros2 run mission_manager route_recorder --ros-args \
+        -p out_csv:=$HOME/mmission_ws/course.csv \
+        -p fix_topic:=/fix -p min_spacing_m:=0.15
+  교차로에서 무슨 기동을 할지는 이 CSV가 아니라, 주행 중 시퀀서(또는 수동)가
+  /intersection/command 로 넣는다. (Mission Sequencer 자동발행은 추후 별도 작업.)
+
+
+════════════════════════════════════════════════════════════════════════════════
+   PART D — 무엇을 준비하고 무엇을 테스트하나 + 장애물 충돌 주의 (필독)
+════════════════════════════════════════════════════════════════════════════════
+
+■ 교차로 로직은 "주변을 전혀 안 본다" (충돌 위험의 근원)
+  회전 동작 = 조향 최대 고정 + IMU 상대 yaw가 ±90°에 도달할 때까지 전진.
+  로직이 보는 입력은 IMU yaw 하나뿐. LiDAR·카메라·벽·연석·코너를 인식하지 않는다.
+    → 공터: 장애물이 없으니 안 부딪힘. (연습에 공터가 안전한 이유)
+    → 실제 + 교차로: 회전 반경이 도로 폭과 안 맞으면 연석/벽/코너에 부딪힐 수 있음.
+    → + 모양이 아닌 곳(T자·비대칭·좁은 골목): 90° 고정 회전이 실제 경로와 어긋나
+       역시 충돌 가능.
+  ★ 결론: "공터에서 회전 반경을 먼저 다 파악한 뒤"에만 실제 교차로에 들어간다.
+
+■ 이 로직의 "회전 반경"은 무엇이 정하나
+  회전 반경 직접 파라미터는 없다. 조향각은 max_steering_deg(27°) 고정이므로,
+  실질적으로 "회전 중 속도"가 반경을 정한다.
+    저속 → yaw 90° 채우는 동안 덜 전진 → 반경 작음
+    고속 → 더 전진 → 반경 큼
+  → 공터에서 "이 속도면 반경 몇 m"를 측정해, 실제 교차로 폭에 맞는 속도를 찾는 게
+    이 테스트의 핵심 산출물이다.
+
+────────────────────────────────────────────────────────────────────────────────
+■ 준비물 (하드웨어)
+────────────────────────────────────────────────────────────────────────────────
+  □ 차량 + IMU 동작 (imu_manager 실행, /imu/relative_yaw_deg·/imu/valid 발행 확인)
+  □ 넓은 공터 — 최소 회전 반경의 3~4배 여유, 벽·사람·장애물 없음
+  □ 바퀴 띄우는 받침대 (1단계용 — 실제로 안 굴러가게)
+  □ 비상정지 수단(전원 킬스위치/리모컨) — 항상 손 닿는 곳
+  □ 줄자 + 분필/테이프 — 회전 반경 측정용
+  □ (선택) GPS — use_position_exit=true 로 원 이탈 종료까지 볼 때만
+
+■ 준비물 (설정, config/mission.yaml)
+  □ 좌/우 목표 yaw 부호를 IMU 실측으로 맞춤 (right/left_target_yaw_deg)
+  □ 회전 중 속도 최저로 (처음엔 아주 느리게)
+  □ imu_invalid_abort_s / imu_stale_timeout_s 기본값 확인
+  □ use_position_exit: false 로 시작(순수 회전 연습). 필요 시 나중에 true.
+
+────────────────────────────────────────────────────────────────────────────────
+■ 테스트 순서 (안전 우선 — 반드시 이 순서)
+────────────────────────────────────────────────────────────────────────────────
+
+【1단계】 바퀴 든 상태 — 출력만 검증 (충돌 위험 0)
+  차를 받침대에 올려 바퀴가 공중에 뜬 상태.
+  PART A "경우 ①" 그대로: 명령 넣고 /target_steering_deg 부호·크기 확인,
+  IMU 90° 채우면 steer=0 복귀 확인. 로직 검증만. 아직 안 굴린다.
+  → 여기서 좌/우 부호가 반대면 config에서 부호 수정 후 재확인.
+
+【2단계】 공터 단일 회전 + 반경 측정 (핵심)
+  바퀴 내리고 넓은 공터에서 좌회전 1회.
+    ros2 topic pub --once /intersection/command std_msgs/msg/UInt8 "{data: 3}"  # LEFT
+  · 시작 위치·방향, 끝 위치를 분필로 표시 → 회전 반경 측정.
+  · mission.yaml에서 회전 중 속도를 바꿔가며(느림→보통) 반경 변화를 표로:
+        속도       | 좌회전 반경 | 우회전 반경
+        ──────────┼────────────┼──────────
+        (느림)     |            |
+        (보통)     |            |
+  · 이 표가 4단계에서 "실제 교차로 폭에 맞는 속도"를 고르는 근거.
+
+【3단계】 공터 12방향 조합 연습 (PART C 매트릭스)
+  여전히 공터라 안전. 네 방향 배치 × 직진/좌/우 = 12칸 전부 시험.
+  각 칸: 회전완료 로그 + steer 부호 + 오버슛 기록.
+  ★ 방위 무관하게 회전각 동일 → 방향별 결과가 다르면 IMU 부호/드리프트/노면 문제.
+
+【4단계】 실제 교차로 크기와 매칭 (여기서 처음 실제 교차로 진입)
+  · 2단계 "속도→반경" 표에서, 실제 교차로 폭에 맞는 회전 속도를 골라 config 반영.
+  · 실제 + 교차로로 이동. 단, 처음엔 사람이 옆에서 따라가며 비상정지 대기.
+  · 반경이 도로에 안 맞으면(코너 침범/바깥 이탈) → 공터로 돌아가 속도 재조정.
+    실제 교차로에서 반경을 처음 맞추려 하지 말 것(충돌 위험).
+
+【5단계】 반복 정밀도 (STRAIGHT/RIGHT/LEFT 각 5회+)
+  같은 위치·방향 반복해 오버슛/코너 침범 편차 확인. IMU 드리프트 누적도 관찰.
+
+────────────────────────────────────────────────────────────────────────────────
+■ 각 단계에서 "무엇을 확인하나" 요약
+────────────────────────────────────────────────────────────────────────────────
+  1단계: 조향 부호·크기, 90° 후 0 복귀           (로직/부호)
+  2단계: 속도별 회전 반경                          (물리 특성 — 가장 중요)
+  3단계: 전 방향·전 기동 동작 일관성               (방위 무관성 확인)
+  4단계: 실제 교차로 폭과 반경 매칭                (충돌 없이 통과)
+  5단계: 반복 정밀도, 드리프트                     (신뢰성)
+
+
+════════════════════════════════════════════════════════════════════════════════
+   남은 실차 검증 항목 (최종 보고 20번)
+════════════════════════════════════════════════════════════════════════════════
+  □ 좌/우 yaw 부호 실측 → YAML 갱신 (지금 -90/+90 은 예시)
+  □ motor_driver 시리얼 송신부 완성 (아직 골격)
+  □ use_position_exit=true (GPS 결합 원 이탈판정) 실차 검증
+  □ STRAIGHT/RIGHT/LEFT 각 5회+ 반복 정밀도 (코너 침범/오버슛)

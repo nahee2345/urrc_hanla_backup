@@ -1,0 +1,24 @@
+video_image_publisher:
+  ros__parameters:
+    video_path: input/test_video.mp4
+    output_topic: /camera/image_raw
+    camera_info_topic: /camera/camera_info
+    original_debug_topic: /video_test/original_image
+    frame_metadata_topic: /video_test/frame_metadata
+    frame_id: camera_color_optical_frame
+    playback_rate: 1.0
+    loop: true
+    start_frame: 0
+    publish_original_debug: true
+    publish_fps: 30.0
+    output_width: 640
+    output_height: 480
+
+video_perception_result_recorder:
+  ros__parameters:
+    output_directory: output
+    metadata_filename: perception_results.jsonl
+    summary_filename: performance_summary.json
+    save_annotated_video: false
+    annotated_video_filename: annotated_result.mp4
+    annotated_video_fps: 30.0

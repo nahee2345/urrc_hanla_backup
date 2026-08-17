@@ -1,0 +1,34 @@
+"""Perception-only D456 + CUDA YOLO-Seg validation profile."""
+from pathlib import Path
+from ament_index_python.packages import get_package_share_directory
+from launch import LaunchDescription
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
+from launch.conditions import IfCondition
+from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch.substitutions import LaunchConfiguration
+from launch_ros.actions import Node
+
+
+def generate_launch_description():
+    camera_share = Path(get_package_share_directory("camera_bringup"))
+    yolo_share = Path(get_package_share_directory("camera_yolo_inference"))
+    declarations = [
+        DeclareLaunchArgument("launch_camera", default_value="true"),
+        DeclareLaunchArgument("launch_rqt", default_value="false"),
+        DeclareLaunchArgument("serial_no", default_value="338122302896"),
+        DeclareLaunchArgument("device", default_value="cuda:0"),
+        DeclareLaunchArgument("require_cuda", default_value="true"),
+    ]
+    camera = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(str(camera_share / "launch" / "d456_bringup.launch.py")),
+        launch_arguments={"serial_no": LaunchConfiguration("serial_no")}.items(),
+        condition=IfCondition(LaunchConfiguration("launch_camera")))
+    inference = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(str(yolo_share / "launch" / "yolo_inference.launch.py")),
+        launch_arguments={"device": LaunchConfiguration("device"),
+                          "require_cuda": LaunchConfiguration("require_cuda"),
+                          "enable_depth_assist": "false"}.items())
+    rqt = Node(package="rqt_image_view", executable="rqt_image_view",
+               arguments=["/perception/detections_image"],
+               condition=IfCondition(LaunchConfiguration("launch_rqt")), output="screen")
+    return LaunchDescription(declarations + [camera, inference, rqt])

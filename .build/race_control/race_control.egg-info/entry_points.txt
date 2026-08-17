@@ -1,0 +1,5 @@
+[console_scripts]
+autonomy_output = race_control.autonomy_output_node:main
+course_mission = race_control.course_mission_node:main
+gazebo_command_adapter = race_control.gazebo_command_adapter_node:main
+pure_pursuit = race_control.pure_pursuit_node:main

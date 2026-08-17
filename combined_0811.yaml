@@ -1,0 +1,27 @@
+train:
+  - /home/parkjinwoo/Downloads/halla0727(Segmentation)/halla0727(Detection)(2)/images/train
+  - /home/parkjinwoo/Downloads/hanla_0721/images/train
+  - /home/parkjinwoo/Downloads/20260728/images/train
+  - /home/parkjinwoo/Downloads/urrc_ hanla_(0811)/data/images/train
+
+# The source datasets do not have separate validation folders. This preserves
+# the previous training setup, but its validation metrics are training-set metrics.
+val:
+  - /home/parkjinwoo/Downloads/halla0727(Segmentation)/halla0727(Detection)(2)/images/train
+  - /home/parkjinwoo/Downloads/hanla_0721/images/train
+  - /home/parkjinwoo/Downloads/20260728/images/train
+  - /home/parkjinwoo/Downloads/urrc_ hanla_(0811)/data/images/train
+
+names:
+  0: road
+  1: W_line
+  2: Y_line
+  3: R_light
+  4: Y_light
+  5: G_light
+  6: Left
+  7: etc_light
+  8: stop
+  9: traffic20
+  10: C_line
+  11: words

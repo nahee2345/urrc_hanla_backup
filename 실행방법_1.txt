@@ -1,0 +1,151 @@
+① 인지 + 경로 생성까지만 실행
+
+cd ~/urrc_hanla/race_autonomy/ros2_ws
+source /opt/ros/jazzy/setup.bash
+source install/setup.bash
+export ROS_DOMAIN_ID=0
+ros2 launch camera_bringup d456_production.launch.py \
+  serial_no:=338122302896
+  
+  
+--------------------------------------------------------------------------------
+
+카메라 캘리브레이션 확인
+카메라 렌즈 정면 + 물리적 수평 상태에서
+cd ~/urrc_hanla/race_autonomy/ros2_ws
+source /opt/ros/jazzy/setup.bash
+source install/setup.bash
+export ROS_DOMAIN_ID=0
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+
+ros2 run imu_manager imu_manager_node \
+--ros-args \
+--params-file "$(ros2 pkg prefix imu_manager)/share/imu_manager/config/imu_manager.yaml" \
+-p sensor_axis_matrix:="[1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, -1.0, 0.0]"
+
+
+ros2 topic echo /imu/roll_deg
+ros2 topic echo /imu/pitch_deg
+  
+
+
+--------------------------------------------------------------------------------
+
+
+IMU가 별도 실행 구조라면 터미널 2:
+cd ~/urrc_hanla/race_autonomy/ros2_ws
+source /opt/ros/jazzy/setup.bash
+source install/setup.bash
+export ROS_DOMAIN_ID=0
+
+ros2 launch imu_manager imu_manager.launch.py
+
+
+
+
+cd ~/urrc_hanla/race_autonomy/ros2_ws
+source /opt/ros/jazzy/setup.bash
+source install/setup.bash
+export ROS_DOMAIN_ID=0
+
+ros2 run camera_navigation camera_metric_path_node
+
+
+
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+
+
+② 인지 → Metric Path → Pure Pursuit → 속도/조향까지 실행
+
+# 1. D456
+cd ~/urrc_hanla/race_autonomy/ros2_ws
+source /opt/ros/jazzy/setup.bash
+source install/setup.bash
+export ROS_DOMAIN_ID=0
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+
+ros2 launch camera_bringup d456_production.launch.py \
+  serial_no:=338122302896
+  
+  
+  
+  
+# 2. IMU
+cd ~/urrc_hanla/race_autonomy/ros2_ws
+source /opt/ros/jazzy/setup.bash
+source install/setup.bash
+export ROS_DOMAIN_ID=0
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+
+ros2 launch imu_manager imu_manager.launch.py
+
+
+
+
+
+cd ~/urrc_hanla/race_autonomy/ros2_ws
+source /opt/ros/jazzy/setup.bash
+source install/setup.bash
+export ROS_DOMAIN_ID=0
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+ros2 run camera_navigation camera_metric_path_node \
+--ros-args \
+--params-file ~/urrc_hanla/race_autonomy/ros2_ws/install/camera_bringup/share/camera_bringup/config/camera_mount.yaml
+
+
+
+cd ~/urrc_hanla/race_autonomy/ros2_ws
+source /opt/ros/jazzy/setup.bash
+source install/setup.bash
+export ROS_DOMAIN_ID=0
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+ros2 run camera_navigation camera_path_controller_node
+
+
+
+
+확인
+ros2 topic list | grep -E \
+'camera/path|image_path|calibration|camera_drive|camera_wheel'
+
+
+--------------------------------------------------------------------------------
+
+
+
+실제 아두이노 시리얼 브릿지
+cd ~/urrc_hanla/race_autonomy/ros2_ws
+source /opt/ros/jazzy/setup.bash
+source install/setup.bash
+export ROS_DOMAIN_ID=0
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+
+ros2 run race_vehicle_interface arduino_serial_bridge_node \
+--ros-args \
+-p port:="/dev/serial/by-id/usb-Arduino__www.arduino.cc__0042_14533303731351115201-if00" \
+-p allow_transmit:=true \
+-p maximum_abs_stage:=2
+
+
+
+ros2 topic echo /arduino/feedback_valid
+
+
+속도 발행
+ros2 service call \
+/arduino_bridge/set_tx_enabled \
+std_srvs/srv/SetBool \
+"{data: true}"
+
+
+속도 정지
+ros2 service call \
+/arduino_bridge/set_tx_enabled \
+std_srvs/srv/SetBool \
+"{data: false}"
+--------------------------------------------------------------------------------
+  

@@ -1,0 +1,2 @@
+[console_scripts]
+camera_path_controller_node = camera_navigation.camera_path_controller_node:main

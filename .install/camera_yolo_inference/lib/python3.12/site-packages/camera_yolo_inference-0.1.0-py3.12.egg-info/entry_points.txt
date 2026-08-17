@@ -1,0 +1,4 @@
+[console_scripts]
+camera_yolo_inference_node = camera_yolo_inference.camera_yolo_inference_node:main
+stop_line_depth_node = camera_yolo_inference.stop_line_depth_node:main
+yellow_line_depth_node = camera_yolo_inference.yellow_line_depth_node:main

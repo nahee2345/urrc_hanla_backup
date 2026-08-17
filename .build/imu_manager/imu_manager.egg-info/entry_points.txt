@@ -1,0 +1,3 @@
+[console_scripts]
+imu_calibration_node = imu_manager.imu_calibration_node:main
+imu_manager_node = imu_manager.imu_manager_node:main

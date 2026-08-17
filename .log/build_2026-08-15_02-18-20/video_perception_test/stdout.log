@@ -1,0 +1,60 @@
+running egg_info
+creating ../.build/video_perception_test/video_perception_test.egg-info
+writing ../.build/video_perception_test/video_perception_test.egg-info/PKG-INFO
+writing dependency_links to ../.build/video_perception_test/video_perception_test.egg-info/dependency_links.txt
+writing entry points to ../.build/video_perception_test/video_perception_test.egg-info/entry_points.txt
+writing requirements to ../.build/video_perception_test/video_perception_test.egg-info/requires.txt
+writing top-level names to ../.build/video_perception_test/video_perception_test.egg-info/top_level.txt
+writing manifest file '../.build/video_perception_test/video_perception_test.egg-info/SOURCES.txt'
+reading manifest file '../.build/video_perception_test/video_perception_test.egg-info/SOURCES.txt'
+writing manifest file '../.build/video_perception_test/video_perception_test.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/qor/urrc_hanla/.build/video_perception_test/build/lib/scripts
+copying scripts/video_reader.py -> /home/qor/urrc_hanla/.build/video_perception_test/build/lib/scripts
+copying scripts/test_paths.py -> /home/qor/urrc_hanla/.build/video_perception_test/build/lib/scripts
+copying scripts/video_image_publisher.py -> /home/qor/urrc_hanla/.build/video_perception_test/build/lib/scripts
+copying scripts/__init__.py -> /home/qor/urrc_hanla/.build/video_perception_test/build/lib/scripts
+copying scripts/result_recorder.py -> /home/qor/urrc_hanla/.build/video_perception_test/build/lib/scripts
+copying scripts/ros_image.py -> /home/qor/urrc_hanla/.build/video_perception_test/build/lib/scripts
+creating /home/qor/urrc_hanla/.build/video_perception_test/build/lib/validation
+copying validation/perception_quality_analyzer.py -> /home/qor/urrc_hanla/.build/video_perception_test/build/lib/validation
+copying validation/__init__.py -> /home/qor/urrc_hanla/.build/video_perception_test/build/lib/validation
+copying validation/run_validation.py -> /home/qor/urrc_hanla/.build/video_perception_test/build/lib/validation
+running install
+running install_lib
+creating /home/qor/urrc_hanla/.install/video_perception_test/lib/python3.12/site-packages/scripts
+copying /home/qor/urrc_hanla/.build/video_perception_test/build/lib/scripts/video_reader.py -> /home/qor/urrc_hanla/.install/video_perception_test/lib/python3.12/site-packages/scripts
+copying /home/qor/urrc_hanla/.build/video_perception_test/build/lib/scripts/test_paths.py -> /home/qor/urrc_hanla/.install/video_perception_test/lib/python3.12/site-packages/scripts
+copying /home/qor/urrc_hanla/.build/video_perception_test/build/lib/scripts/video_image_publisher.py -> /home/qor/urrc_hanla/.install/video_perception_test/lib/python3.12/site-packages/scripts
+copying /home/qor/urrc_hanla/.build/video_perception_test/build/lib/scripts/__init__.py -> /home/qor/urrc_hanla/.install/video_perception_test/lib/python3.12/site-packages/scripts
+copying /home/qor/urrc_hanla/.build/video_perception_test/build/lib/scripts/result_recorder.py -> /home/qor/urrc_hanla/.install/video_perception_test/lib/python3.12/site-packages/scripts
+copying /home/qor/urrc_hanla/.build/video_perception_test/build/lib/scripts/ros_image.py -> /home/qor/urrc_hanla/.install/video_perception_test/lib/python3.12/site-packages/scripts
+creating /home/qor/urrc_hanla/.install/video_perception_test/lib/python3.12/site-packages/validation
+copying /home/qor/urrc_hanla/.build/video_perception_test/build/lib/validation/perception_quality_analyzer.py -> /home/qor/urrc_hanla/.install/video_perception_test/lib/python3.12/site-packages/validation
+copying /home/qor/urrc_hanla/.build/video_perception_test/build/lib/validation/__init__.py -> /home/qor/urrc_hanla/.install/video_perception_test/lib/python3.12/site-packages/validation
+copying /home/qor/urrc_hanla/.build/video_perception_test/build/lib/validation/run_validation.py -> /home/qor/urrc_hanla/.install/video_perception_test/lib/python3.12/site-packages/validation
+byte-compiling /home/qor/urrc_hanla/.install/video_perception_test/lib/python3.12/site-packages/scripts/video_reader.py to video_reader.cpython-312.pyc
+byte-compiling /home/qor/urrc_hanla/.install/video_perception_test/lib/python3.12/site-packages/scripts/test_paths.py to test_paths.cpython-312.pyc
+byte-compiling /home/qor/urrc_hanla/.install/video_perception_test/lib/python3.12/site-packages/scripts/video_image_publisher.py to video_image_publisher.cpython-312.pyc
+byte-compiling /home/qor/urrc_hanla/.install/video_perception_test/lib/python3.12/site-packages/scripts/__init__.py to __init__.cpython-312.pyc
+byte-compiling /home/qor/urrc_hanla/.install/video_perception_test/lib/python3.12/site-packages/scripts/result_recorder.py to result_recorder.cpython-312.pyc
+byte-compiling /home/qor/urrc_hanla/.install/video_perception_test/lib/python3.12/site-packages/scripts/ros_image.py to ros_image.cpython-312.pyc
+byte-compiling /home/qor/urrc_hanla/.install/video_perception_test/lib/python3.12/site-packages/validation/perception_quality_analyzer.py to perception_quality_analyzer.cpython-312.pyc
+byte-compiling /home/qor/urrc_hanla/.install/video_perception_test/lib/python3.12/site-packages/validation/__init__.py to __init__.cpython-312.pyc
+byte-compiling /home/qor/urrc_hanla/.install/video_perception_test/lib/python3.12/site-packages/validation/run_validation.py to run_validation.cpython-312.pyc
+running install_data
+creating /home/qor/urrc_hanla/.install/video_perception_test/share/ament_index/resource_index/packages
+copying resource/video_perception_test -> /home/qor/urrc_hanla/.install/video_perception_test/share/ament_index/resource_index/packages
+copying package.xml -> /home/qor/urrc_hanla/.install/video_perception_test/share/video_perception_test
+copying README.md -> /home/qor/urrc_hanla/.install/video_perception_test/share/video_perception_test
+creating /home/qor/urrc_hanla/.install/video_perception_test/share/video_perception_test/config
+copying config/video_perception_test.yaml -> /home/qor/urrc_hanla/.install/video_perception_test/share/video_perception_test/config
+creating /home/qor/urrc_hanla/.install/video_perception_test/share/video_perception_test/launch
+copying launch/video_perception_test.launch.py -> /home/qor/urrc_hanla/.install/video_perception_test/share/video_perception_test/launch
+running install_egg_info
+Copying ../.build/video_perception_test/video_perception_test.egg-info to /home/qor/urrc_hanla/.install/video_perception_test/lib/python3.12/site-packages/video_perception_test-0.1.0-py3.12.egg-info
+running install_scripts
+Installing result_recorder script to /home/qor/urrc_hanla/.install/video_perception_test/lib/video_perception_test
+Installing video_image_publisher script to /home/qor/urrc_hanla/.install/video_perception_test/lib/video_perception_test
+writing list of installed files to '/home/qor/urrc_hanla/.build/video_perception_test/install.log'

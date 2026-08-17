@@ -1,0 +1,15 @@
+{
+  "package_name": "race_interfaces",
+  "output_dir": "/home/qor/urrc_hanla/.build/race_interfaces/rosidl_generator_type_description/race_interfaces",
+  "idl_tuples": [
+    "/home/qor/urrc_hanla/.build/race_interfaces/rosidl_adapter/race_interfaces:msg/AutonomyObservation.idl",
+    "/home/qor/urrc_hanla/.build/race_interfaces/rosidl_adapter/race_interfaces:msg/PathState.idl"
+  ],
+  "include_paths": [
+    "std_msgs:/opt/ros/jazzy/share/std_msgs",
+    "builtin_interfaces:/opt/ros/jazzy/share/builtin_interfaces",
+    "nav_msgs:/opt/ros/jazzy/share/nav_msgs",
+    "geometry_msgs:/opt/ros/jazzy/share/geometry_msgs",
+    "service_msgs:/opt/ros/jazzy/share/service_msgs"
+  ]
+}

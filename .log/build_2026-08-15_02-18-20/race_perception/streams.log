@@ -1,0 +1,59 @@
+[1.023s] Invoking command in '/home/qor/urrc_hanla/race_autonomy/ros2_ws/src/race_perception': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/qor/urrc_hanla/.build/race_perception/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/qor/urrc_hanla/.install/race_perception/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../../.build/race_perception build --build-base /home/qor/urrc_hanla/.build/race_perception/build install --record /home/qor/urrc_hanla/.build/race_perception/install.log --install-scripts $base/lib/race_perception --single-version-externally-managed install_data
+[1.118s] /home/qor/.local/lib/python3.12/site-packages/setuptools/_distutils/dist.py:287: UserWarning: Unknown distribution option: 'tests_require'
+[1.118s]   warnings.warn(msg)
+[1.176s] running egg_info
+[1.187s] creating ../../../../.build/race_perception/race_perception.egg-info
+[1.187s] writing ../../../../.build/race_perception/race_perception.egg-info/PKG-INFO
+[1.187s] writing dependency_links to ../../../../.build/race_perception/race_perception.egg-info/dependency_links.txt
+[1.187s] writing entry points to ../../../../.build/race_perception/race_perception.egg-info/entry_points.txt
+[1.187s] writing requirements to ../../../../.build/race_perception/race_perception.egg-info/requires.txt
+[1.187s] writing top-level names to ../../../../.build/race_perception/race_perception.egg-info/top_level.txt
+[1.187s] writing manifest file '../../../../.build/race_perception/race_perception.egg-info/SOURCES.txt'
+[1.207s] reading manifest file '../../../../.build/race_perception/race_perception.egg-info/SOURCES.txt'
+[1.207s] writing manifest file '../../../../.build/race_perception/race_perception.egg-info/SOURCES.txt'
+[1.207s] running build
+[1.207s] running build_py
+[1.207s] creating /home/qor/urrc_hanla/.build/race_perception/build/lib/race_perception
+[1.207s] copying race_perception/yolo_camera_node.py -> /home/qor/urrc_hanla/.build/race_perception/build/lib/race_perception
+[1.207s] copying race_perception/lane_center_node.py -> /home/qor/urrc_hanla/.build/race_perception/build/lib/race_perception
+[1.207s] copying race_perception/traffic_light_color.py -> /home/qor/urrc_hanla/.build/race_perception/build/lib/race_perception
+[1.207s] copying race_perception/__init__.py -> /home/qor/urrc_hanla/.build/race_perception/build/lib/race_perception
+[1.207s] copying race_perception/traffic_light_color_node.py -> /home/qor/urrc_hanla/.build/race_perception/build/lib/race_perception
+[1.208s] copying race_perception/segmentation_path.py -> /home/qor/urrc_hanla/.build/race_perception/build/lib/race_perception
+[1.208s] running install
+[1.211s] running install_lib
+[1.220s] creating /home/qor/urrc_hanla/.install/race_perception/lib/python3.12/site-packages/race_perception
+[1.220s] copying /home/qor/urrc_hanla/.build/race_perception/build/lib/race_perception/yolo_camera_node.py -> /home/qor/urrc_hanla/.install/race_perception/lib/python3.12/site-packages/race_perception
+[1.220s] copying /home/qor/urrc_hanla/.build/race_perception/build/lib/race_perception/lane_center_node.py -> /home/qor/urrc_hanla/.install/race_perception/lib/python3.12/site-packages/race_perception
+[1.220s] copying /home/qor/urrc_hanla/.build/race_perception/build/lib/race_perception/traffic_light_color.py -> /home/qor/urrc_hanla/.install/race_perception/lib/python3.12/site-packages/race_perception
+[1.220s] copying /home/qor/urrc_hanla/.build/race_perception/build/lib/race_perception/__init__.py -> /home/qor/urrc_hanla/.install/race_perception/lib/python3.12/site-packages/race_perception
+[1.220s] copying /home/qor/urrc_hanla/.build/race_perception/build/lib/race_perception/traffic_light_color_node.py -> /home/qor/urrc_hanla/.install/race_perception/lib/python3.12/site-packages/race_perception
+[1.220s] copying /home/qor/urrc_hanla/.build/race_perception/build/lib/race_perception/segmentation_path.py -> /home/qor/urrc_hanla/.install/race_perception/lib/python3.12/site-packages/race_perception
+[1.220s] byte-compiling /home/qor/urrc_hanla/.install/race_perception/lib/python3.12/site-packages/race_perception/yolo_camera_node.py to yolo_camera_node.cpython-312.pyc
+[1.222s] byte-compiling /home/qor/urrc_hanla/.install/race_perception/lib/python3.12/site-packages/race_perception/lane_center_node.py to lane_center_node.cpython-312.pyc
+[1.223s] byte-compiling /home/qor/urrc_hanla/.install/race_perception/lib/python3.12/site-packages/race_perception/traffic_light_color.py to traffic_light_color.cpython-312.pyc
+[1.223s] byte-compiling /home/qor/urrc_hanla/.install/race_perception/lib/python3.12/site-packages/race_perception/__init__.py to __init__.cpython-312.pyc
+[1.224s] byte-compiling /home/qor/urrc_hanla/.install/race_perception/lib/python3.12/site-packages/race_perception/traffic_light_color_node.py to traffic_light_color_node.cpython-312.pyc
+[1.224s] byte-compiling /home/qor/urrc_hanla/.install/race_perception/lib/python3.12/site-packages/race_perception/segmentation_path.py to segmentation_path.cpython-312.pyc
+[1.225s] running install_data
+[1.225s] creating /home/qor/urrc_hanla/.install/race_perception/share/ament_index/resource_index/packages
+[1.225s] copying resource/race_perception -> /home/qor/urrc_hanla/.install/race_perception/share/ament_index/resource_index/packages
+[1.225s] copying package.xml -> /home/qor/urrc_hanla/.install/race_perception/share/race_perception
+[1.225s] creating /home/qor/urrc_hanla/.install/race_perception/share/race_perception/launch
+[1.225s] copying launch/yolo_camera.launch.py -> /home/qor/urrc_hanla/.install/race_perception/share/race_perception/launch
+[1.226s] copying launch/traffic_light_color.launch.py -> /home/qor/urrc_hanla/.install/race_perception/share/race_perception/launch
+[1.226s] copying launch/path_following.launch.py -> /home/qor/urrc_hanla/.install/race_perception/share/race_perception/launch
+[1.226s] copying launch/lane_center.launch.py -> /home/qor/urrc_hanla/.install/race_perception/share/race_perception/launch
+[1.226s] creating /home/qor/urrc_hanla/.install/race_perception/share/race_perception/config
+[1.226s] copying config/pure_pursuit.yaml -> /home/qor/urrc_hanla/.install/race_perception/share/race_perception/config
+[1.226s] copying config/lane_center.yaml -> /home/qor/urrc_hanla/.install/race_perception/share/race_perception/config
+[1.226s] copying config/yolo_camera.yaml -> /home/qor/urrc_hanla/.install/race_perception/share/race_perception/config
+[1.226s] copying config/traffic_light_color.yaml -> /home/qor/urrc_hanla/.install/race_perception/share/race_perception/config
+[1.226s] running install_egg_info
+[1.236s] Copying ../../../../.build/race_perception/race_perception.egg-info to /home/qor/urrc_hanla/.install/race_perception/lib/python3.12/site-packages/race_perception-0.1.0-py3.12.egg-info
+[1.236s] running install_scripts
+[1.255s] Installing lane_center script to /home/qor/urrc_hanla/.install/race_perception/lib/race_perception
+[1.256s] Installing traffic_light_color script to /home/qor/urrc_hanla/.install/race_perception/lib/race_perception
+[1.256s] Installing yolo_camera script to /home/qor/urrc_hanla/.install/race_perception/lib/race_perception
+[1.256s] writing list of installed files to '/home/qor/urrc_hanla/.build/race_perception/install.log'
+[1.276s] Invoked command in '/home/qor/urrc_hanla/race_autonomy/ros2_ws/src/race_perception' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/qor/urrc_hanla/.build/race_perception/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/qor/urrc_hanla/.install/race_perception/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../../.build/race_perception build --build-base /home/qor/urrc_hanla/.build/race_perception/build install --record /home/qor/urrc_hanla/.build/race_perception/install.log --install-scripts $base/lib/race_perception --single-version-externally-managed install_data

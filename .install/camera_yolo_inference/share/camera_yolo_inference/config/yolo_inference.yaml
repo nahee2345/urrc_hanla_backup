@@ -1,0 +1,28 @@
+camera_yolo_inference_node:
+  ros__parameters:
+    backend: tensorrt
+    segmentation_model_path: ""
+    class_manifest_path: ""
+    device: cuda:0
+    input_size: 640
+    confidence_threshold: 0.25
+    mask_threshold: 0.50
+    max_image_age_sec: 0.40
+    # Conservative initial limit; tune only after measuring the target GPU.
+    max_inference_latency_ms: 300.0
+    input_image_topic: /camera/image_raw
+    input_reliability: best_effort
+    input_camera_info_topic: /camera/camera_info
+    stop_detected_topic: /perception/stop_detected
+    stop_confidence_threshold: 0.25
+    publish_diagnostics: true
+    require_cuda: true
+    warmup_count: 5
+    publish_debug_image: true
+    publish_optional_masks: false
+    debug_overlay_alpha: 0.35
+    debug_draw_contours: false
+    debug_draw_boxes: true
+    debug_draw_labels: true
+    debug_draw_confidence: true
+    use_sim_time: false

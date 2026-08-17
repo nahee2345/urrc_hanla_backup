@@ -1,0 +1,55 @@
+running egg_info
+creating ../../../../.build/race_perception/race_perception.egg-info
+writing ../../../../.build/race_perception/race_perception.egg-info/PKG-INFO
+writing dependency_links to ../../../../.build/race_perception/race_perception.egg-info/dependency_links.txt
+writing entry points to ../../../../.build/race_perception/race_perception.egg-info/entry_points.txt
+writing requirements to ../../../../.build/race_perception/race_perception.egg-info/requires.txt
+writing top-level names to ../../../../.build/race_perception/race_perception.egg-info/top_level.txt
+writing manifest file '../../../../.build/race_perception/race_perception.egg-info/SOURCES.txt'
+reading manifest file '../../../../.build/race_perception/race_perception.egg-info/SOURCES.txt'
+writing manifest file '../../../../.build/race_perception/race_perception.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/qor/urrc_hanla/.build/race_perception/build/lib/race_perception
+copying race_perception/yolo_camera_node.py -> /home/qor/urrc_hanla/.build/race_perception/build/lib/race_perception
+copying race_perception/lane_center_node.py -> /home/qor/urrc_hanla/.build/race_perception/build/lib/race_perception
+copying race_perception/traffic_light_color.py -> /home/qor/urrc_hanla/.build/race_perception/build/lib/race_perception
+copying race_perception/__init__.py -> /home/qor/urrc_hanla/.build/race_perception/build/lib/race_perception
+copying race_perception/traffic_light_color_node.py -> /home/qor/urrc_hanla/.build/race_perception/build/lib/race_perception
+copying race_perception/segmentation_path.py -> /home/qor/urrc_hanla/.build/race_perception/build/lib/race_perception
+running install
+running install_lib
+creating /home/qor/urrc_hanla/.install/race_perception/lib/python3.12/site-packages/race_perception
+copying /home/qor/urrc_hanla/.build/race_perception/build/lib/race_perception/yolo_camera_node.py -> /home/qor/urrc_hanla/.install/race_perception/lib/python3.12/site-packages/race_perception
+copying /home/qor/urrc_hanla/.build/race_perception/build/lib/race_perception/lane_center_node.py -> /home/qor/urrc_hanla/.install/race_perception/lib/python3.12/site-packages/race_perception
+copying /home/qor/urrc_hanla/.build/race_perception/build/lib/race_perception/traffic_light_color.py -> /home/qor/urrc_hanla/.install/race_perception/lib/python3.12/site-packages/race_perception
+copying /home/qor/urrc_hanla/.build/race_perception/build/lib/race_perception/__init__.py -> /home/qor/urrc_hanla/.install/race_perception/lib/python3.12/site-packages/race_perception
+copying /home/qor/urrc_hanla/.build/race_perception/build/lib/race_perception/traffic_light_color_node.py -> /home/qor/urrc_hanla/.install/race_perception/lib/python3.12/site-packages/race_perception
+copying /home/qor/urrc_hanla/.build/race_perception/build/lib/race_perception/segmentation_path.py -> /home/qor/urrc_hanla/.install/race_perception/lib/python3.12/site-packages/race_perception
+byte-compiling /home/qor/urrc_hanla/.install/race_perception/lib/python3.12/site-packages/race_perception/yolo_camera_node.py to yolo_camera_node.cpython-312.pyc
+byte-compiling /home/qor/urrc_hanla/.install/race_perception/lib/python3.12/site-packages/race_perception/lane_center_node.py to lane_center_node.cpython-312.pyc
+byte-compiling /home/qor/urrc_hanla/.install/race_perception/lib/python3.12/site-packages/race_perception/traffic_light_color.py to traffic_light_color.cpython-312.pyc
+byte-compiling /home/qor/urrc_hanla/.install/race_perception/lib/python3.12/site-packages/race_perception/__init__.py to __init__.cpython-312.pyc
+byte-compiling /home/qor/urrc_hanla/.install/race_perception/lib/python3.12/site-packages/race_perception/traffic_light_color_node.py to traffic_light_color_node.cpython-312.pyc
+byte-compiling /home/qor/urrc_hanla/.install/race_perception/lib/python3.12/site-packages/race_perception/segmentation_path.py to segmentation_path.cpython-312.pyc
+running install_data
+creating /home/qor/urrc_hanla/.install/race_perception/share/ament_index/resource_index/packages
+copying resource/race_perception -> /home/qor/urrc_hanla/.install/race_perception/share/ament_index/resource_index/packages
+copying package.xml -> /home/qor/urrc_hanla/.install/race_perception/share/race_perception
+creating /home/qor/urrc_hanla/.install/race_perception/share/race_perception/launch
+copying launch/yolo_camera.launch.py -> /home/qor/urrc_hanla/.install/race_perception/share/race_perception/launch
+copying launch/traffic_light_color.launch.py -> /home/qor/urrc_hanla/.install/race_perception/share/race_perception/launch
+copying launch/path_following.launch.py -> /home/qor/urrc_hanla/.install/race_perception/share/race_perception/launch
+copying launch/lane_center.launch.py -> /home/qor/urrc_hanla/.install/race_perception/share/race_perception/launch
+creating /home/qor/urrc_hanla/.install/race_perception/share/race_perception/config
+copying config/pure_pursuit.yaml -> /home/qor/urrc_hanla/.install/race_perception/share/race_perception/config
+copying config/lane_center.yaml -> /home/qor/urrc_hanla/.install/race_perception/share/race_perception/config
+copying config/yolo_camera.yaml -> /home/qor/urrc_hanla/.install/race_perception/share/race_perception/config
+copying config/traffic_light_color.yaml -> /home/qor/urrc_hanla/.install/race_perception/share/race_perception/config
+running install_egg_info
+Copying ../../../../.build/race_perception/race_perception.egg-info to /home/qor/urrc_hanla/.install/race_perception/lib/python3.12/site-packages/race_perception-0.1.0-py3.12.egg-info
+running install_scripts
+Installing lane_center script to /home/qor/urrc_hanla/.install/race_perception/lib/race_perception
+Installing traffic_light_color script to /home/qor/urrc_hanla/.install/race_perception/lib/race_perception
+Installing yolo_camera script to /home/qor/urrc_hanla/.install/race_perception/lib/race_perception
+writing list of installed files to '/home/qor/urrc_hanla/.build/race_perception/install.log'

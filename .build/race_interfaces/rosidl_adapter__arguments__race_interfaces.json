@@ -1,0 +1,7 @@
+{
+  "package_name": "race_interfaces",
+  "non_idl_tuples": [
+    "/home/qor/urrc_hanla/race_autonomy/ros2_ws/src/race_interfaces:msg/AutonomyObservation.msg",
+    "/home/qor/urrc_hanla/race_autonomy/ros2_ws/src/race_interfaces:msg/PathState.msg"
+  ]
+}

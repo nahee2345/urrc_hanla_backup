@@ -1,0 +1,84 @@
+[0.131s] Invoking command in '/home/qor/urrc_hanla/.build/gazebo_car_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/race_control:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/race_vehicle_interface:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/race_perception:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/imu_manager:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/camera_yolo_inference:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/camera_navigation:/home/qor/mcu_ws/install/mcu_serial_bridge:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/qor/urrc_hanla/race_autonomy/ros2_ws/src/gazebo_car_description -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/qor/urrc_hanla/.install/gazebo_car_description
+[0.515s] -- The C compiler identification is GNU 13.3.0
+[0.515s] -- The CXX compiler identification is GNU 13.3.0
+[0.515s] -- Detecting C compiler ABI info
+[0.515s] -- Detecting C compiler ABI info - done
+[0.515s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.515s] -- Detecting C compile features
+[0.515s] -- Detecting C compile features - done
+[0.515s] -- Detecting CXX compiler ABI info
+[0.515s] -- Detecting CXX compiler ABI info - done
+[0.515s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.515s] -- Detecting CXX compile features
+[0.515s] -- Detecting CXX compile features - done
+[0.515s] -- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.515s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[0.515s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.648s] -- Skipping missing optional program: scripts/lane_perception.py
+[0.648s] -- Skipping missing optional program: scripts/lane_control.py
+[0.649s] -- Skipping missing optional program: scripts/white_line_follow_node.py
+[0.649s] -- Skipping missing optional program: scripts/rear_lidar_roi_node.py
+[0.649s] -- Skipping missing optional program: scripts/rear_lidar_marker_node.py
+[0.649s] -- Configuring done (0.5s)
+[0.649s] -- Generating done (0.0s)
+[0.649s] -- Build files have been written to: /home/qor/urrc_hanla/.build/gazebo_car_description
+[0.651s] Invoked command in '/home/qor/urrc_hanla/.build/gazebo_car_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/race_control:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/race_vehicle_interface:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/race_perception:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/imu_manager:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/camera_yolo_inference:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/camera_navigation:/home/qor/mcu_ws/install/mcu_serial_bridge:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/qor/urrc_hanla/race_autonomy/ros2_ws/src/gazebo_car_description -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/qor/urrc_hanla/.install/gazebo_car_description
+[0.652s] Invoking command in '/home/qor/urrc_hanla/.build/gazebo_car_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/race_control:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/race_vehicle_interface:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/race_perception:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/imu_manager:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/camera_yolo_inference:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/camera_navigation:/home/qor/mcu_ws/install/mcu_serial_bridge:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/qor/urrc_hanla/.build/gazebo_car_description -- -j24 -l24
+[0.681s] Invoked command in '/home/qor/urrc_hanla/.build/gazebo_car_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/race_control:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/race_vehicle_interface:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/race_perception:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/imu_manager:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/camera_yolo_inference:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/camera_navigation:/home/qor/mcu_ws/install/mcu_serial_bridge:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/qor/urrc_hanla/.build/gazebo_car_description -- -j24 -l24
+[0.689s] Invoking command in '/home/qor/urrc_hanla/.build/gazebo_car_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/race_control:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/race_vehicle_interface:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/race_perception:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/imu_manager:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/camera_yolo_inference:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/camera_navigation:/home/qor/mcu_ws/install/mcu_serial_bridge:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/qor/urrc_hanla/.build/gazebo_car_description
+[0.695s] -- Install configuration: ""
+[0.695s] -- Execute custom install script
+[0.696s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/launch/__pycache__/autonomy_full.launch.cpython-312.pyc
+[0.702s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/launch/__pycache__/bringup_lane_stack.launch.cpython-312.pyc
+[0.708s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/launch/__pycache__/control_only.launch.cpython-312.pyc
+[0.715s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/launch/__pycache__/drive_m2wr.launch.cpython-312.pyc
+[0.721s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/launch/__pycache__/lane_stack.launch.cpython-312.pyc
+[0.727s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/launch/__pycache__/perception_only.launch.cpython-312.pyc
+[0.732s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/launch/__pycache__/sim_only.launch.cpython-312.pyc
+[0.738s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/launch/__pycache__/spawn_m2wr.launch.cpython-312.pyc
+[0.743s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/launch/__pycache__/spawn_race_A_white_line.launch.cpython-312.pyc
+[0.749s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/launch/__pycache__/spawn_race_B_white_line.launch.cpython-312.pyc
+[0.754s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/launch/control_only.launch.py
+[0.759s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/launch/perception_only.launch.py
+[0.765s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/launch/sim_only.launch.py
+[0.771s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/launch/spawn_m2wr.launch.py
+[0.776s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/launch/spawn_race_A_white_line.launch.py
+[0.782s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/launch/spawn_race_B_white_line.launch.py
+[0.788s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/urdf/m2wr_gz.urdf
+[0.794s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/worlds/lane_track.world
+[0.800s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/worlds/race_A.world
+[0.805s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/worlds/race_B.world
+[0.813s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/config/gz_bridge.yaml
+[0.818s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/config/gz_gui.config
+[0.824s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/config/lane_control.yaml
+[0.830s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/config/lane_detector.yaml
+[0.836s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/config/lane_perception.yaml
+[0.842s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/config/race_A_cmd_vel_bridge.yaml
+[0.848s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/config/race_B_cmd_vel_bridge.yaml
+[0.853s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/config/rear_lidar_marker.yaml
+[0.861s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/config/rear_lidar_roi.yaml
+[0.866s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/config/vehicle_cmd_adapter.yaml
+[0.873s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/config/white_line_follow.yaml
+[0.880s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/models/race_B_obstacle_dynamic/model.sdf
+[0.887s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/models/start_finish_flag_red/model.config
+[0.894s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/models/start_finish_flag_red/model.sdf
+[0.901s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/ament_index/resource_index/package_run_dependencies/gazebo_car_description
+[0.909s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/ament_index/resource_index/parent_prefix_path/gazebo_car_description
+[0.915s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/environment/ament_prefix_path.sh
+[0.922s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/environment/ament_prefix_path.dsv
+[0.929s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/environment/path.sh
+[0.936s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/environment/path.dsv
+[0.942s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/local_setup.bash
+[0.949s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/local_setup.sh
+[0.956s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/local_setup.zsh
+[0.962s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/local_setup.dsv
+[0.967s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/package.dsv
+[0.974s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/ament_index/resource_index/packages/gazebo_car_description
+[0.980s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/cmake/gazebo_car_descriptionConfig.cmake
+[0.987s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/cmake/gazebo_car_descriptionConfig-version.cmake
+[0.992s] -- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/package.xml
+[0.998s] -- Installing: /home/qor/urrc_hanla/.install/gazebo_car_description/lib/gazebo_car_description/vehicle_cmd_adapter
+[0.998s] -- Installing: /home/qor/urrc_hanla/.install/gazebo_car_description/lib/gazebo_car_description/race_b_blinking_obstacle
+[0.998s] -- Installing: /home/qor/urrc_hanla/.install/gazebo_car_description/lib/gazebo_car_description/race_b_spawn_m2wr_once
+[0.998s] -- Installing: /home/qor/urrc_hanla/.install/gazebo_car_description/lib/gazebo_car_description/race_b_traffic_light
+[1.000s] Invoked command in '/home/qor/urrc_hanla/.build/gazebo_car_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/race_control:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/race_vehicle_interface:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/race_perception:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/imu_manager:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/camera_yolo_inference:/home/qor/urrc_hanla/race_autonomy/ros2_ws/install/camera_navigation:/home/qor/mcu_ws/install/mcu_serial_bridge:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/qor/urrc_hanla/.build/gazebo_car_description

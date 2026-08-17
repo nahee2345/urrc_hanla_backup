@@ -1,0 +1,78 @@
+-- The C compiler identification is GNU 13.3.0
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Skipping missing optional program: scripts/lane_perception.py
+-- Skipping missing optional program: scripts/lane_control.py
+-- Skipping missing optional program: scripts/white_line_follow_node.py
+-- Skipping missing optional program: scripts/rear_lidar_roi_node.py
+-- Skipping missing optional program: scripts/rear_lidar_marker_node.py
+-- Configuring done (0.5s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/qor/urrc_hanla/.build/gazebo_car_description
+-- Install configuration: ""
+-- Execute custom install script
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/launch/__pycache__/autonomy_full.launch.cpython-312.pyc
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/launch/__pycache__/bringup_lane_stack.launch.cpython-312.pyc
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/launch/__pycache__/control_only.launch.cpython-312.pyc
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/launch/__pycache__/drive_m2wr.launch.cpython-312.pyc
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/launch/__pycache__/lane_stack.launch.cpython-312.pyc
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/launch/__pycache__/perception_only.launch.cpython-312.pyc
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/launch/__pycache__/sim_only.launch.cpython-312.pyc
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/launch/__pycache__/spawn_m2wr.launch.cpython-312.pyc
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/launch/__pycache__/spawn_race_A_white_line.launch.cpython-312.pyc
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/launch/__pycache__/spawn_race_B_white_line.launch.cpython-312.pyc
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/launch/control_only.launch.py
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/launch/perception_only.launch.py
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/launch/sim_only.launch.py
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/launch/spawn_m2wr.launch.py
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/launch/spawn_race_A_white_line.launch.py
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/launch/spawn_race_B_white_line.launch.py
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/urdf/m2wr_gz.urdf
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/worlds/lane_track.world
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/worlds/race_A.world
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/worlds/race_B.world
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/config/gz_bridge.yaml
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/config/gz_gui.config
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/config/lane_control.yaml
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/config/lane_detector.yaml
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/config/lane_perception.yaml
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/config/race_A_cmd_vel_bridge.yaml
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/config/race_B_cmd_vel_bridge.yaml
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/config/rear_lidar_marker.yaml
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/config/rear_lidar_roi.yaml
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/config/vehicle_cmd_adapter.yaml
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/config/white_line_follow.yaml
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/models/race_B_obstacle_dynamic/model.sdf
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/models/start_finish_flag_red/model.config
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/models/start_finish_flag_red/model.sdf
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/ament_index/resource_index/package_run_dependencies/gazebo_car_description
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/ament_index/resource_index/parent_prefix_path/gazebo_car_description
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/environment/ament_prefix_path.sh
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/environment/ament_prefix_path.dsv
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/environment/path.sh
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/environment/path.dsv
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/local_setup.bash
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/local_setup.sh
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/local_setup.zsh
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/local_setup.dsv
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/package.dsv
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/ament_index/resource_index/packages/gazebo_car_description
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/cmake/gazebo_car_descriptionConfig.cmake
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/cmake/gazebo_car_descriptionConfig-version.cmake
+-- Symlinking: /home/qor/urrc_hanla/.install/gazebo_car_description/share/gazebo_car_description/package.xml
+-- Installing: /home/qor/urrc_hanla/.install/gazebo_car_description/lib/gazebo_car_description/vehicle_cmd_adapter
+-- Installing: /home/qor/urrc_hanla/.install/gazebo_car_description/lib/gazebo_car_description/race_b_blinking_obstacle
+-- Installing: /home/qor/urrc_hanla/.install/gazebo_car_description/lib/gazebo_car_description/race_b_spawn_m2wr_once
+-- Installing: /home/qor/urrc_hanla/.install/gazebo_car_description/lib/gazebo_car_description/race_b_traffic_light

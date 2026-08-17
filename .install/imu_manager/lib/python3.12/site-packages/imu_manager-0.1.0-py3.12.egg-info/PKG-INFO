@@ -1,0 +1,15 @@
+Metadata-Version: 2.4
+Name: imu_manager
+Version: 0.1.0
+Summary: Filter D456 raw gyro and accel ROS topics.
+Maintainer: ww
+Maintainer-email: ww@todo.todo
+License: Apache-2.0
+Requires-Dist: setuptools
+Requires-Dist: numpy
+Requires-Dist: PyYAML
+Dynamic: license
+Dynamic: maintainer
+Dynamic: maintainer-email
+Dynamic: requires-dist
+Dynamic: summary

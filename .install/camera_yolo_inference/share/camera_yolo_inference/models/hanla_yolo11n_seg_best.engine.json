@@ -1,0 +1,39 @@
+{
+  "source_model_filename": "hanla_yolo11n_seg_best.pt",
+  "source_model_sha256": "2f378690dfb38ee4196fedc2f7bd2a0f67122251448ee5e90ff16ae2f1739276",
+  "engine_filename": "hanla_yolo11n_seg_best.engine",
+  "ultralytics_version": "8.4.104",
+  "tensorrt_version": "11.1.0.106",
+  "pytorch_version": "2.12.1+cu130",
+  "torch_cuda_version": "13.0",
+  "nvidia_driver": "595.84",
+  "gpu_name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+  "compute_capability": [
+    12,
+    0
+  ],
+  "precision": "fp16",
+  "batch": 1,
+  "imgsz": 640,
+  "dynamic": false,
+  "int8": false,
+  "task": "segment",
+  "class_count": 12,
+  "class_names": {
+    "0": "road",
+    "1": "W_line",
+    "2": "Y_line",
+    "3": "R_light",
+    "4": "Y_light",
+    "5": "G_light",
+    "6": "Left",
+    "7": "etc_light",
+    "8": "stop",
+    "9": "traffic20",
+    "10": "C_line",
+    "11": "words"
+  },
+  "platform": "Linux-7.0.0-28-generic-x86_64-with-glibc2.39",
+  "python_version": "3.12.3",
+  "creation_timestamp": "2026-08-14T15:05:46.972287+00:00"
+}

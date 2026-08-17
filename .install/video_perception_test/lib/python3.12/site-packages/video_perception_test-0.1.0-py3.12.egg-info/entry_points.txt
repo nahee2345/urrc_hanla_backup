@@ -1,0 +1,3 @@
+[console_scripts]
+result_recorder = scripts.result_recorder:main
+video_image_publisher = scripts.video_image_publisher:main

@@ -1,0 +1,6 @@
+[console_scripts]
+arduino_serial_bridge_node = race_vehicle_interface.arduino_serial_bridge_node:main
+encoder_serial_bridge_node = race_vehicle_interface.encoder_serial_bridge_node:main
+forward_stop_controller_node = race_vehicle_interface.forward_stop_controller_node:main
+measured_motion_state_node = race_vehicle_interface.measured_motion_state_node:main
+vehicle_interface_node = race_vehicle_interface.vehicle_interface_node:main

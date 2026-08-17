@@ -1,0 +1,4 @@
+[console_scripts]
+lane_center = race_perception.lane_center_node:main
+traffic_light_color = race_perception.traffic_light_color_node:main
+yolo_camera = race_perception.yolo_camera_node:main

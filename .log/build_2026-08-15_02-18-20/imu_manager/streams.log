@@ -1,0 +1,48 @@
+[1.016s] Invoking command in '/home/qor/urrc_hanla/race_autonomy/ros2_ws/src/imu_manager': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/qor/urrc_hanla/.build/imu_manager/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/qor/urrc_hanla/.install/imu_manager/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../../.build/imu_manager build --build-base /home/qor/urrc_hanla/.build/imu_manager/build install --record /home/qor/urrc_hanla/.build/imu_manager/install.log --install-scripts $base/lib/imu_manager --single-version-externally-managed install_data
+[1.109s] /home/qor/.local/lib/python3.12/site-packages/setuptools/_distutils/dist.py:287: UserWarning: Unknown distribution option: 'tests_require'
+[1.109s]   warnings.warn(msg)
+[1.166s] running egg_info
+[1.177s] creating ../../../../.build/imu_manager/imu_manager.egg-info
+[1.177s] writing ../../../../.build/imu_manager/imu_manager.egg-info/PKG-INFO
+[1.177s] writing dependency_links to ../../../../.build/imu_manager/imu_manager.egg-info/dependency_links.txt
+[1.177s] writing entry points to ../../../../.build/imu_manager/imu_manager.egg-info/entry_points.txt
+[1.177s] writing requirements to ../../../../.build/imu_manager/imu_manager.egg-info/requires.txt
+[1.177s] writing top-level names to ../../../../.build/imu_manager/imu_manager.egg-info/top_level.txt
+[1.177s] writing manifest file '../../../../.build/imu_manager/imu_manager.egg-info/SOURCES.txt'
+[1.197s] reading manifest file '../../../../.build/imu_manager/imu_manager.egg-info/SOURCES.txt'
+[1.197s] writing manifest file '../../../../.build/imu_manager/imu_manager.egg-info/SOURCES.txt'
+[1.197s] running build
+[1.197s] running build_py
+[1.197s] creating /home/qor/urrc_hanla/.build/imu_manager/build/lib/imu_manager
+[1.197s] copying imu_manager/imu_calibration_node.py -> /home/qor/urrc_hanla/.build/imu_manager/build/lib/imu_manager
+[1.197s] copying imu_manager/imu_manager_node.py -> /home/qor/urrc_hanla/.build/imu_manager/build/lib/imu_manager
+[1.197s] copying imu_manager/__init__.py -> /home/qor/urrc_hanla/.build/imu_manager/build/lib/imu_manager
+[1.197s] copying imu_manager/imu_filter.py -> /home/qor/urrc_hanla/.build/imu_manager/build/lib/imu_manager
+[1.197s] running install
+[1.200s] running install_lib
+[1.209s] creating /home/qor/urrc_hanla/.install/imu_manager/lib/python3.12/site-packages/imu_manager
+[1.209s] copying /home/qor/urrc_hanla/.build/imu_manager/build/lib/imu_manager/imu_calibration_node.py -> /home/qor/urrc_hanla/.install/imu_manager/lib/python3.12/site-packages/imu_manager
+[1.209s] copying /home/qor/urrc_hanla/.build/imu_manager/build/lib/imu_manager/imu_manager_node.py -> /home/qor/urrc_hanla/.install/imu_manager/lib/python3.12/site-packages/imu_manager
+[1.209s] copying /home/qor/urrc_hanla/.build/imu_manager/build/lib/imu_manager/__init__.py -> /home/qor/urrc_hanla/.install/imu_manager/lib/python3.12/site-packages/imu_manager
+[1.209s] copying /home/qor/urrc_hanla/.build/imu_manager/build/lib/imu_manager/imu_filter.py -> /home/qor/urrc_hanla/.install/imu_manager/lib/python3.12/site-packages/imu_manager
+[1.210s] byte-compiling /home/qor/urrc_hanla/.install/imu_manager/lib/python3.12/site-packages/imu_manager/imu_calibration_node.py to imu_calibration_node.cpython-312.pyc
+[1.211s] byte-compiling /home/qor/urrc_hanla/.install/imu_manager/lib/python3.12/site-packages/imu_manager/imu_manager_node.py to imu_manager_node.cpython-312.pyc
+[1.213s] byte-compiling /home/qor/urrc_hanla/.install/imu_manager/lib/python3.12/site-packages/imu_manager/__init__.py to __init__.cpython-312.pyc
+[1.213s] byte-compiling /home/qor/urrc_hanla/.install/imu_manager/lib/python3.12/site-packages/imu_manager/imu_filter.py to imu_filter.cpython-312.pyc
+[1.216s] running install_data
+[1.216s] creating /home/qor/urrc_hanla/.install/imu_manager/share/ament_index/resource_index/packages
+[1.216s] copying resource/imu_manager -> /home/qor/urrc_hanla/.install/imu_manager/share/ament_index/resource_index/packages
+[1.216s] copying package.xml -> /home/qor/urrc_hanla/.install/imu_manager/share/imu_manager
+[1.216s] copying README.md -> /home/qor/urrc_hanla/.install/imu_manager/share/imu_manager
+[1.216s] creating /home/qor/urrc_hanla/.install/imu_manager/share/imu_manager/config
+[1.216s] copying config/imu_manager.yaml -> /home/qor/urrc_hanla/.install/imu_manager/share/imu_manager/config
+[1.217s] creating /home/qor/urrc_hanla/.install/imu_manager/share/imu_manager/launch
+[1.217s] copying launch/imu_manager.launch.py -> /home/qor/urrc_hanla/.install/imu_manager/share/imu_manager/launch
+[1.217s] copying launch/imu_calibration.launch.py -> /home/qor/urrc_hanla/.install/imu_manager/share/imu_manager/launch
+[1.217s] running install_egg_info
+[1.226s] Copying ../../../../.build/imu_manager/imu_manager.egg-info to /home/qor/urrc_hanla/.install/imu_manager/lib/python3.12/site-packages/imu_manager-0.1.0-py3.12.egg-info
+[1.227s] running install_scripts
+[1.246s] Installing imu_calibration_node script to /home/qor/urrc_hanla/.install/imu_manager/lib/imu_manager
+[1.246s] Installing imu_manager_node script to /home/qor/urrc_hanla/.install/imu_manager/lib/imu_manager
+[1.246s] writing list of installed files to '/home/qor/urrc_hanla/.build/imu_manager/install.log'
+[1.264s] Invoked command in '/home/qor/urrc_hanla/race_autonomy/ros2_ws/src/imu_manager' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/qor/urrc_hanla/.build/imu_manager/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/qor/urrc_hanla/.install/imu_manager/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../../.build/imu_manager build --build-base /home/qor/urrc_hanla/.build/imu_manager/build install --record /home/qor/urrc_hanla/.build/imu_manager/install.log --install-scripts $base/lib/imu_manager --single-version-externally-managed install_data

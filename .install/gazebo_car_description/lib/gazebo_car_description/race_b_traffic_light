@@ -1,0 +1,224 @@
+#!/usr/bin/env python3
+
+import subprocess
+import time
+
+import rclpy
+from rclpy.node import Node
+from std_msgs.msg import String
+
+
+class RaceBTrafficLight(Node):
+    LAMP_NAMES = {
+        'red': 'red_lens_visual',
+        'yellow': 'yellow_lens_visual',
+        'green': 'green_lens_visual',
+    }
+
+    ACTIVE_COLORS = {
+        'red': (1.0, 0.02, 0.02),
+        'yellow': (1.0, 0.78, 0.0),
+        'green': (0.02, 1.0, 0.08),
+    }
+
+    DIM_COLORS = {
+        'red': (0.12, 0.0, 0.0),
+        'yellow': (0.12, 0.08, 0.0),
+        'green': (0.0, 0.12, 0.0),
+    }
+
+    PHASES = ('RED', 'YELLOW', 'GREEN', 'YELLOW')
+
+    def __init__(self):
+        super().__init__('race_b_traffic_light')
+
+        self.declare_parameter('world_name', 'default')
+        self.declare_parameter('phase_duration_sec', 3.0)
+        self.declare_parameter('republish_period_sec', 0.5)
+        self.declare_parameter('gz_command_timeout_sec', 1.0)
+
+        self.world_name = str(self.get_parameter('world_name').value)
+        self.phase_duration_sec = float(self.get_parameter('phase_duration_sec').value)
+        self.republish_period_sec = float(self.get_parameter('republish_period_sec').value)
+        self.gz_command_timeout_sec = max(
+            0.1,
+            float(self.get_parameter('gz_command_timeout_sec').value),
+        )
+
+        self.state_pub = self.create_publisher(String, '/traffic_light/state', 10)
+        self.material_topic = f'/world/{self.world_name}/material_color'
+
+        self.phase_index = 0
+        self.phase_start_time = time.monotonic()
+        self.last_publish_time = 0.0
+        self._last_warning_time = {}
+        self._material_processes = []
+        self._max_material_processes = 24
+        self._timer = self.create_timer(0.1, self._tick)
+
+        self.get_logger().info(
+            'Race B traffic light ready: '
+            'RED 3s -> YELLOW 3s -> GREEN 3s -> YELLOW 3s -> repeat'
+        )
+        self._publish_phase(log_state=True)
+
+    def destroy_node(self):
+        for process, _, _ in self._material_processes:
+            if process.poll() is None:
+                process.terminate()
+        self._material_processes = []
+        return super().destroy_node()
+
+    def _tick(self):
+        now = time.monotonic()
+        if now - self.phase_start_time >= self.phase_duration_sec:
+            self.phase_index = (self.phase_index + 1) % len(self.PHASES)
+            self.phase_start_time = now
+            self._publish_phase(log_state=True)
+            return
+
+        if now - self.last_publish_time >= self.republish_period_sec:
+            self._publish_phase(log_state=False)
+
+    def _publish_phase(self, log_state):
+        self._reap_material_processes()
+
+        active_state = self.PHASES[self.phase_index]
+        active_lamp = active_state.lower()
+
+        state_msg = String()
+        state_msg.data = active_state
+        self.state_pub.publish(state_msg)
+
+        for lamp in self.LAMP_NAMES:
+            self._publish_lamp_color(lamp, lamp == active_lamp)
+
+        self.last_publish_time = time.monotonic()
+        if log_state:
+            self.get_logger().info(f'Traffic light phase: {active_state}')
+
+    def _publish_lamp_color(self, lamp, active):
+        color = self.ACTIVE_COLORS[lamp] if active else self.DIM_COLORS[lamp]
+        emissive_scale = 1.0 if active else 0.15
+
+        for visual_name in self._visual_name_candidates(self.LAMP_NAMES[lamp]):
+            request = self._material_color_request(
+                visual_name,
+                color,
+                (
+                    color[0] * emissive_scale,
+                    color[1] * emissive_scale,
+                    color[2] * emissive_scale,
+                ),
+            )
+            self._publish_material_request(request, visual_name)
+
+    def _visual_name_candidates(self, visual_name):
+        return (
+            f'{self.world_name}::race_B_traffic_signal::traffic_signal_link::{visual_name}',
+            f'race_B_traffic_signal::traffic_signal_link::{visual_name}',
+        )
+
+    def _material_color_request(self, visual_name, ambient_diffuse, emissive):
+        return (
+            f'entity {{ name: "{visual_name}" type: 4 }} '
+            f'ambient {{ r: {ambient_diffuse[0]:.6f} g: {ambient_diffuse[1]:.6f} '
+            f'b: {ambient_diffuse[2]:.6f} a: 1.0 }} '
+            f'diffuse {{ r: {ambient_diffuse[0]:.6f} g: {ambient_diffuse[1]:.6f} '
+            f'b: {ambient_diffuse[2]:.6f} a: 1.0 }} '
+            'specular { r: 0.1 g: 0.1 b: 0.1 a: 1.0 } '
+            f'emissive {{ r: {emissive[0]:.6f} g: {emissive[1]:.6f} '
+            f'b: {emissive[2]:.6f} a: 1.0 }} '
+            'shininess: 0.5 '
+            'entity_match: 1'
+        )
+
+    def _publish_material_request(self, request, visual_name):
+        cmd = [
+            'gz',
+            'topic',
+            '-t',
+            self.material_topic,
+            '-m',
+            'gz.msgs.MaterialColor',
+            '-p',
+            request,
+        ]
+
+        self._reap_material_processes()
+        if len(self._material_processes) >= self._max_material_processes:
+            self._warn_throttled(
+                'material_process_limit',
+                'Skipping traffic-light material update because previous gz topic '
+                'commands are still running.',
+            )
+            return
+
+        try:
+            process = subprocess.Popen(
+                cmd,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+            )
+        except OSError as exc:
+            self._warn_throttled(
+                'material_start_failed',
+                f'Could not run gz topic for traffic-light material updates: {exc}',
+            )
+            return
+
+        self._material_processes.append((process, time.monotonic(), visual_name))
+
+    def _reap_material_processes(self):
+        now = time.monotonic()
+        active_processes = []
+        for process, start_time, visual_name in self._material_processes:
+            return_code = process.poll()
+            if return_code is None:
+                if now - start_time > self.gz_command_timeout_sec:
+                    process.terminate()
+                    try:
+                        process.wait(timeout=0.05)
+                    except subprocess.TimeoutExpired:
+                        process.kill()
+                    self._warn_throttled(
+                        'material_timeout',
+                        f'Timed out publishing traffic-light material for {visual_name}.',
+                    )
+                else:
+                    active_processes.append((process, start_time, visual_name))
+                continue
+
+            if return_code != 0:
+                self._warn_throttled(
+                    'material_publish_failed',
+                    f'Could not publish traffic-light material update for {visual_name}.',
+                )
+
+        self._material_processes = active_processes
+
+    def _warn_throttled(self, key, message, period_sec=5.0):
+        now = time.monotonic()
+        last = self._last_warning_time.get(key)
+        if last is not None and now - last < period_sec:
+            return
+
+        self._last_warning_time[key] = now
+        self.get_logger().warn(message)
+
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = RaceBTrafficLight()
+    try:
+        rclpy.spin(node)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        node.destroy_node()
+        if rclpy.ok():
+            rclpy.shutdown()
+
+
+if __name__ == '__main__':
+    main()
